@@ -4,4 +4,4 @@ Group 2:
 - Ferdi Salim Sungkar (1806173576)
 - Aufa Wiandra Moenzil (1706067512)
 
-Our Application
+Teaching Assistant Student Connector (TASC)
