@@ -1,8 +1,7 @@
-image: gradle:alpine
+image: gradle:jdk11
 variables:
   SONAR_TOKEN: "7b58b4b00b275046d37b5d3c441196a149de07e4"
   SONAR_HOST_URL: "https://pmpl.cs.ui.ac.id/sonarqube/"
-  GIT_DEPTH: "0"
 
 sonarqube-check:
   stage: test
