@@ -31,6 +31,7 @@ Test:
     - gradle check
 
 Deployment:
+  image: ruby:2.6
   stage: deploy
   before_script:
     - gem install dpl
