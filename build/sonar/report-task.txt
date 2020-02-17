@@ -1,0 +1,6 @@
+projectKey=advprog2020-i-group2assignment
+serverUrl=https://pmpl.cs.ui.ac.id/sonarqube
+serverVersion=7.9.1.27448
+dashboardUrl=https://pmpl.cs.ui.ac.id/sonarqube/dashboard?id=advprog2020-i-group2assignment
+ceTaskId=AXBQuG495DDjR33SjoYi
+ceTaskUrl=https://pmpl.cs.ui.ac.id/sonarqube/api/ce/task?id=AXBQuG495DDjR33SjoYi
