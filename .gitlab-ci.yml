@@ -3,9 +3,32 @@ variables:
   SONAR_TOKEN: "7b58b4b00b275046d37b5d3c441196a149de07e4"
   SONAR_HOST_URL: "https://pmpl.cs.ui.ac.id/sonarqube/"
 
-sonarqube-check:
+stages:
+  - build
+  - test
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+Build:
+  stage: build
+  script:
+    - gradle assemble
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 1 week
+  only:
+    - master
+
+Test:
   stage: test
-  script: gradle sonarqube -Dsonar.qualitygate.wait=true
+  script:
+    - gradle check
+
+Sonarqube:
+  stage: test
+  script: gradle sonarqube -Dsonar.projectKey=advprog2020-i-group2assignment -Dsonar.host.url=https://pmpl.cs.ui.ac.id/sonarqube -Dsonar.login=7b58b4b00b275046d37b5d3c441196a149de07e4
   allow_failure: true
   only:
     - merge_requests
