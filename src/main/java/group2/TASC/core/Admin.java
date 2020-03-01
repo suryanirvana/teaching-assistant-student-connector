@@ -4,7 +4,14 @@ public class Admin implements User {
     private String name;
     private String userName;
     private String passWord;
-    private Course course;
+    private String role;
+
+    public Admin(String name, String userName, String passWord) {
+        super();
+        this.userName = userName;
+        this.passWord = passWord;
+        this.role = "Admin";
+    }
 
     @Override
     public String getName() {
@@ -36,7 +43,12 @@ public class Admin implements User {
         this.passWord = passWord;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void assignCourseTA(Course course, TeachingAssistant TA) {
         // TODO
+        TA.getCourse().add(course);
     }
 }

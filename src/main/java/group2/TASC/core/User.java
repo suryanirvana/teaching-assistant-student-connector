@@ -1,10 +1,14 @@
 package group2.TASC.core;
 
 public interface User {
-    public String getUserName();
-    public String getPassWord();
-    public String getName();
-    public void setName(String name);
-    public void setUserName(String userName);
-    public void setPassWord(String passWord);
+    String userName = "";
+    String name = "";
+    String passWord = "";
+
+    String getUserName();
+    String getPassWord();
+    String getName();
+    void setName(String name);
+    void setUserName(String userName);
+    void setPassWord(String passWord);
 }

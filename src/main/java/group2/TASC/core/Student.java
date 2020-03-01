@@ -1,17 +1,24 @@
 package group2.TASC.core;
 
+import java.util.ArrayList;
+
 class Student implements User {
     private String name;
     private String userName;
     private String passWord;
-    private Schedule schedule;
-    private TeachingAssistant TA;
+    private String role;
+    private ArrayList<Schedule> studentSchedule;
+    private ArrayList<Appointment> studentAppointments;
+    private ArrayList<Reminder> studentReminder;
 
-    public Student(String name, String userName, String passWord, Schedule schedule) {
+    public Student(String name, String userName, String passWord) {
         this.name = name;
         this.userName = userName;
         this.passWord = passWord;
-        this.schedule = schedule;
+        this.role = "Student";
+        this.studentSchedule = new ArrayList<>();
+        this.studentAppointments = new ArrayList<>();
+        this.studentReminder = new ArrayList<>();
     }
 
     @Override
@@ -44,21 +51,29 @@ class Student implements User {
         this.passWord = passWord;
     }
 
-    public void createAppointment(TeachingAssistant TA, Schedule schedule) {
+    public String getRole() {
+        return role;
+    }
+
+    public void createAppointment(Student student, TeachingAssistant TA, Schedule schedule) {
         // TODO
+        Appointment new_appointment = new Appointment(this, TA, schedule);
+        studentAppointments.add(new_appointment);
     }
 
     public void setReminder(Reminder reminder) {
         // TODO
+        this.studentReminder.add(reminder);
     }
 
-    public void getAppointments() {
+    public ArrayList<Appointment> getAppointments() {
         // TODO
         // do we need class appointment??
+        return this.studentAppointments;
     }
 
-    public Schedule getSchedule() {
+    public ArrayList<Schedule> getSchedule() {
         // TODO
-        return this.schedule;
+        return this.studentSchedule;
     }
 }
