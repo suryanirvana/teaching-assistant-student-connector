@@ -1,4 +1,8 @@
-Group 2:
+## Badges
+[![Pipelines](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc_teaching-assistant-student-connector/badges/master/pipeline.svg)](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/)
+[![Coverage](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc_teaching-assistant-student-connector/badges/master/coverage.svg)](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/)
+
+## Group 2:
 - I Made Gede Surya Nirvana Prima (1806173550) acting as Lead Developer
 - Tsamara Esperanti Erwin (1806173563) acting as Lead UI/UX Designer
 - Ferdi Salim Sungkar (1806173576) acting as the Project Manager
@@ -6,7 +10,7 @@ Group 2:
 
 Teaching Assistant Student Connector (TASC) is a web-based application for students to make appointment with their teaching assistants easily. There are 3 kind of users in this application, student, teaching assistant and admin. Students can see the courses they have enrolled for the semester, also their TAs' schedule. Students can book an appointment with their teaching assistants and set a reminder for it. TAs can see the courses that they are responsible for and can add their schedule in the calendar. TAs can reject or accept students' appointment and set notifications for it. Both students and TAs can set multiple reminders. Admins can oversee user activities in TASC app.
 
-How to run the program
+## How to run the program
 
 1. Open the git repository on https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector
 2. Clone the git repository to your computer
@@ -18,7 +22,7 @@ How to run the program
 8. Now you can open localhost:8080 and it will open the site.
 
 
-How to test the program
+## How to test the program
 
 1. Open the git repository on https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector
 2. Clone the git repository to your computer
