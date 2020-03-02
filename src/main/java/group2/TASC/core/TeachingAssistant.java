@@ -2,7 +2,7 @@ package group2.TASC.core;
 
 import java.util.ArrayList;
 
-class TeachingAssistant implements User{
+class TeachingAssistant implements User {
     private String name;
     private String userName;
     private String passWord;
