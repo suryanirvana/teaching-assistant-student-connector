@@ -1,6 +1,6 @@
 ## Badges
-[![Pipeline Status](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/badges/master/pipeline.svg)](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/commits/master)
-[![Coverage Status](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/badges/master/coverage.svg)](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/commits/master)
+[![pipeline status](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/badges/master/pipeline.svg)](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/commits/master)
+[![coverage report](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/badges/master/coverage.svg)](https://gitlab.cs.ui.ac.id/software-engineering-2020-2/tasc-teaching-assistant-student-connector/commits/master)
 
 ## Group 2:
 - I Made Gede Surya Nirvana Prima (1806173550) acting as Lead Developer
