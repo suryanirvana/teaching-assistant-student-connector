@@ -50,3 +50,13 @@ Sonarqube:
   only:
     - merge_requests
     - master
+    -
+
+unitTests:
+  stage: test
+  script:
+    - ./gradlew test
+    - ./gradlew jacocoTestReport
+    - cat build/jacocoHtml/index.html
+  coverage: '/Total.*?([0-9]{1,3})%/'
+
