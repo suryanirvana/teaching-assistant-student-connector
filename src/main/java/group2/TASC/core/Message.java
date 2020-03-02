@@ -12,14 +12,6 @@ public class Message {
         this.messageContent = messageContent;
     }
 
-    public User getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(User recipient) {
-        this.recipient = recipient;
-    }
-
     public String getMessageTitle() {
         return messageTitle;
     }

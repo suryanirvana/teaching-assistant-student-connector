@@ -38,4 +38,16 @@ public class ReminderTest {
         reminder.setDuration(temp);
         assertEquals(reminder.getDuration(), temp);
     }
+
+    @Test
+    void testGetDate() {
+        assertEquals(reminder.getDate(), new Date());
+    }
+
+    @Test
+    void testSetDate() {
+        Date date = new Date();
+        reminder.setDate(date);
+        assertEquals(reminder.getDate(), new Date());
+    }
 }

@@ -9,6 +9,9 @@ class Student implements User {
     private String role;
     private ArrayList<Schedule> studentSchedule;
     private ArrayList<Appointment> studentAppointments;
+
+
+
     private ArrayList<Reminder> studentReminder;
 
     public Student(String name, String userName, String passWord) {
@@ -59,6 +62,10 @@ class Student implements User {
         // TODO
         Appointment new_appointment = new Appointment(this, TA, schedule);
         studentAppointments.add(new_appointment);
+    }
+
+    public ArrayList<Reminder> getStudentReminder() {
+        return studentReminder;
     }
 
     public void setReminder(Reminder reminder) {

@@ -2,6 +2,7 @@ package group2.TASC.core;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,4 +57,57 @@ public class TeachingAssistantTest {
         assertTrue(((TeachingAssistant) ta).getAppointments().contains(new_appointment));
     }
 
+    @Test
+    void sendMessageTest() {
+        ((TeachingAssistant) ta).sendRejectionMessage((Student) student, "test", "test");
+        int temp = ((TeachingAssistant) ta).getMessages().size();
+        assertEquals(temp, 1);
+    }
+
+    @Test
+    void testAddSchedule() {
+        ((TeachingAssistant) ta).addSchedule(schedule);
+        int temp = ((TeachingAssistant) ta).getSchedule().size();
+        assertEquals(temp, 1);
+    }
+
+    @Test
+    void testSetReminder() {
+        Reminder reminder = new Reminder(date, "test", 2);
+        ((TeachingAssistant) ta).setReminder(reminder);
+        int temp = ((TeachingAssistant) ta).getReminder().size();
+        assertEquals(temp, 1);
+    }
+
+    @Test
+    void testGetReminder() {
+        ArrayList<Reminder> temp = ((TeachingAssistant) ta).getReminder();
+        assertEquals(temp, new ArrayList<>());
+    }
+
+    @Test
+    void testDeleteSchedule() {
+        ((TeachingAssistant) ta).addSchedule(schedule);
+        ((TeachingAssistant) ta).deleteSchedule(schedule);
+        int temp = ((TeachingAssistant) ta).getSchedule().size();
+        assertEquals(temp, 0);
+    }
+
+    @Test
+    void testGetCourse() {
+        assertEquals(((TeachingAssistant) ta).getCourse(), new ArrayList<>());
+    }
+
+    @Test
+    void testSetCourse() {
+        Course new_course = new Course(schedule, "test", "test");
+        ((TeachingAssistant) ta).setCourse(new_course);
+        int temp = ((TeachingAssistant) ta).getCourse().size();
+        assertEquals(temp, 1);
+    }
+
+    @Test
+    void testGetRole() {
+        assertEquals(((TeachingAssistant) ta).getRole(), "Teaching Assistant");
+    }
 }

@@ -12,6 +12,8 @@ class TeachingAssistant implements User {
     private ArrayList<Reminder> TAReminder;
     private ArrayList<Course> TACourse;
 
+    private ArrayList<Message> messages;
+
     public TeachingAssistant(String name, String userName, String passWord) {
         this.name = name;
         this.userName = userName;
@@ -21,6 +23,7 @@ class TeachingAssistant implements User {
         this.TAAppointments = new ArrayList<>();
         this.TAReminder = new ArrayList<>();
         this.TACourse = new ArrayList<>();
+        this.messages = new ArrayList<>();
     }
 
 
@@ -54,6 +57,10 @@ class TeachingAssistant implements User {
         this.passWord = passWord;
     }
 
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
     public String getRole() {
         return role;
     }
@@ -83,6 +90,7 @@ class TeachingAssistant implements User {
     public void sendRejectionMessage(Student student, String title, String content) {
         //TODO
         Message new_message = new Message(student, title, content);
+        messages.add(new_message);
     }
 
     public void deleteSchedule(Schedule schedule) {
