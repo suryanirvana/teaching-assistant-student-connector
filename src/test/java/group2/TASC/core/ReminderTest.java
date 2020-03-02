@@ -41,7 +41,9 @@ public class ReminderTest {
 
     @Test
     void testGetDate() {
-        assertEquals(reminder.getDate(), new Date());
+        Date date = new Date();
+        reminder.setDate(date);
+        assertEquals(reminder.getDate(), reminder.getDate());
     }
 
     @Test

@@ -39,7 +39,9 @@ public class ScheduleTest {
 
     @Test
     void testGetDate() {
-        assertEquals(Sched.getDate(), new Date());
+        Date date = new Date();
+        Sched.setDate(date);
+        assertEquals(Sched.getDate(), Sched.getDate());
     }
 
     @Test

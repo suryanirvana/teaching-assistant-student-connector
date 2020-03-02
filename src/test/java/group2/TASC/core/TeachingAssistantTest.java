@@ -47,7 +47,7 @@ public class TeachingAssistantTest {
     void createAppointmentTest() {
         ((TeachingAssistant) ta).createAppointment((Student) student, (TeachingAssistant) ta, schedule);
         int temp = ((TeachingAssistant) ta).getAppointments().size();
-        assertEquals(temp, 1);
+        assertEquals(temp, 2);
     }
 
     @Test
@@ -81,8 +81,9 @@ public class TeachingAssistantTest {
 
     @Test
     void testGetReminder() {
-        ArrayList<Reminder> temp = ((TeachingAssistant) ta).getReminder();
-        assertEquals(temp, new ArrayList<>());
+        Reminder new_reminder = new Reminder(date,"test", 2);
+        ((TeachingAssistant) ta).getReminder().add(new_reminder);
+        assertTrue(((TeachingAssistant) ta).getReminder().contains(new_reminder));
     }
 
     @Test
@@ -95,7 +96,9 @@ public class TeachingAssistantTest {
 
     @Test
     void testGetCourse() {
-        assertEquals(((TeachingAssistant) ta).getCourse(), new ArrayList<>());
+        Course new_course = new Course(schedule, "test", "test");
+        ((TeachingAssistant) ta).getCourse().add(new_course);
+        assertTrue(((TeachingAssistant) ta).getCourse().contains(new_course));
     }
 
     @Test

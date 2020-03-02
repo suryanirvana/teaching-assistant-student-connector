@@ -44,7 +44,7 @@ public class StudentTests {
     @Test
     void createAppointmentTest() {
         ((Student) student).createAppointment((Student) student, (TeachingAssistant) ta, schedule);
-        int temp = ((TeachingAssistant) ta).getAppointments().size();
+        int temp = ((Student) student).getAppointments().size();
         assertEquals(temp, 1);
     }
 
@@ -58,13 +58,15 @@ public class StudentTests {
 
     @Test
     void testGetReminder() {
-        ArrayList<Reminder> temp = ((Student) student).getStudentReminder();
-        assertEquals(temp, new ArrayList<>());
+        Reminder new_reminder = new Reminder(date,"test", 2);
+        ((Student) student).getStudentReminder().add(new_reminder);
+        assertTrue(((Student) student).getStudentReminder().contains(new_reminder));
     }
     @Test
     void testGetAppointments() {
-        ArrayList<Appointment> temp = ((Student) student).getAppointments();
-        assertEquals(temp, new ArrayList<>());
+        Appointment new_appointment = new Appointment((Student) student, (TeachingAssistant) ta, schedule);
+        ((Student) student).getAppointments().add(new_appointment);
+        assertTrue(((Student) student).getAppointments().contains(new_appointment));
     }
     @Test
     void testGetSchedule() {
