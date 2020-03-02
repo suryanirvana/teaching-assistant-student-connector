@@ -6,6 +6,13 @@ public class Schedule {
     private String scheduleName;
     private int duration;
 
+    public Schedule(Date date, String scheduleName, int duration) {
+        this.date = date;
+        this.scheduleName = scheduleName;
+        this.duration = duration;
+    }
+
+
     public Date getDate() {
         return date;
     }
