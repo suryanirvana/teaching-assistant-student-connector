@@ -50,7 +50,6 @@ Sonarqube:
   only:
     - merge_requests
     - master
-    -
 
 unitTests:
   stage: test
