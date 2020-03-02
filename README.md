@@ -33,3 +33,9 @@ Teaching Assistant Student Connector (TASC) is a web-based application for stude
 7. Wait for the InteliJ to run your program until it said "BUILD SUCCESSFUL" and "Test passed..."that means you have successfully build your program and passed the test
 
 link heroku : ap2020group2.herokuapp.com
+
+## Role for phase 2
+- I Made Gede Surya Nirvana Prima (1806173550), create classes, create tests, and fix tests
+- Tsamara Esperanti Erwin (1806173563), create classes, create tests
+- Ferdi Salim Sungkar (1806173576), create tests, create README.md, fix tests 
+- Aufa Wiandra Moenzil (1706067512) ascting as Vice of Lead Developer, create tests, setup JaCoCo
