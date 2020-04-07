@@ -45,6 +45,11 @@ public class ScheduleServiceTest {
     }
 
     @Test
+    void getListSchedule() {
+        assertEquals(scheduleRepo.findAllByOrderByIdAsc().get(0).getId(), scheduleService.getAllSchedule().get(0).getId());
+    }
+
+    @Test
     void testGetScheduleByIdFound() {
         try {
             assertEquals(schedule.getId(), scheduleService.getScheduleById(1234).getId());
