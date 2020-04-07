@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,50 +18,17 @@
         <table class="table table-bordered" style="text-align: center;">
             <thead>
             <tr>
-                <th scope="col">Monday</th>
-                <th scope="col">Tuesday</th>
-                <th scope="col">Wednesday</th>
-                <th scope="col">Thursday</th>
-                <th scope="col">Friday</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Duration</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th> My Schedule </th>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule</td>
-                <td> My Schedule</td>
+            <tr th:each="schedule:${schedule}">
+                <td th:text="${schedule.scheduleName}"></td>
+                <td th:text="${schedule.date}"></td>
+                <td th:text="${schedule.duration}"></td>
             </tr>
-            <tr>
-                <th> My Schedule </th>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule</td>
-                <td> My Schedule</td>
-            </tr>
-            <tr>
-                <th> My Schedule </th>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule</td>
-            </tr>
-            <tr>
-                <th> My Schedule </th>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule</td>
-            </tr>
-            <tr>
-                <th> My Schedule </th>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule </td>
-                <td> My Schedule</td>
-            </tr>
-            </tbody>
         </table>
         <br>
     </div>
