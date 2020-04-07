@@ -28,7 +28,7 @@
             <br>
             <div class="form-group">
                 <label for="date">Date</label> <br>
-                <input type="text" th:field="*{date}" id="date" placeholder="Date">
+                <input type="date" th:field="*{date}" id="date" placeholder="Date">
                 <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
                 <br><br><br>
                 <button type="button" class="btn btn-dark" style="text-align: center;">

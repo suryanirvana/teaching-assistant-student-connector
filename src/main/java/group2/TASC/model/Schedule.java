@@ -14,6 +14,7 @@ public class Schedule {
     private Long id;
     @NotNull
     private Date date;
+
     @NotNull
     private String scheduleName;
     @NotNull
