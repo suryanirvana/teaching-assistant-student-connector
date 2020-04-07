@@ -34,8 +34,10 @@ Teaching Assistant Student Connector (TASC) is a web-based application for stude
 
 link heroku : ap2020group2.herokuapp.com
 
-## Role for phase 2
-- I Made Gede Surya Nirvana Prima (1806173550), create classes, create tests, and fix tests
-- Tsamara Esperanti Erwin (1806173563), create classes, create tests
-- Ferdi Salim Sungkar (1806173576), create tests, create README.md, fix tests 
-- Aufa Wiandra Moenzil (1706067512) ascting as Vice of Lead Developer, create tests, setup JaCoCo
+## Role for phase 3
+Implement use case student can see and add schedule:
+    - I Made Gede Surya Nirvana Prima (1806173550)
+    - Tsamara Esperanti Erwin (1806173563)
+Implement use case student can edit and delete schedule:
+    - Ferdi Salim Sungkar (1806173576)
+    - Aufa Wiandra Moenzil (1706067512)

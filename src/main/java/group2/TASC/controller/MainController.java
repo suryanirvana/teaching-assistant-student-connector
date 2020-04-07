@@ -41,6 +41,7 @@ public class MainController {
             return "add-schedule";
         }
         scheduleRepo.save(schedule);
+        model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
         return "see-schedule";
     }
 }
