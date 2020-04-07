@@ -41,6 +41,6 @@ public class MainController {
             return "add-schedule";
         }
         scheduleRepo.save(schedule);
-        return REDIRECT;
+        return "see-schedule";
     }
 }
