@@ -1,5 +1,6 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Schedule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,8 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CourseTest {
     private static Date date = new Date();
-    private static Schedule schedule = new Schedule(date, "Course: AP", 2);
-    private static Course course = new Course(schedule, "Advanced Programming", "AP");
+    private static Course course = new Course(null, "Advanced Programming", "AP");
+    private static Schedule schedule = new Schedule();
+
+    @BeforeEach
+    void setUpSchedule() {
+        schedule.setDate(date);
+        schedule.setScheduleName("Course: AP");
+        schedule.setDuration(2);
+        course.setCourseSchedule(schedule);
+    }
 
     @Test
     void checkIfScheduleNameExist() {
@@ -33,7 +42,9 @@ public class CourseTest {
 
     @Test
     void checkIfScheduleExistInCourse() {
-        Schedule schedule = new Schedule(date, "", 2);
+        schedule.setDate(date);
+        schedule.setScheduleName("");
+        schedule.setDuration(2);
         course.setCourseSchedule(schedule);
         assertEquals(course.getCourseSchedule(), schedule);
     }

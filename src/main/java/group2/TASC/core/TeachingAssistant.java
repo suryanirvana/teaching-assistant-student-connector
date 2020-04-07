@@ -1,5 +1,7 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Schedule;
+
 import java.util.ArrayList;
 
 class TeachingAssistant implements User {

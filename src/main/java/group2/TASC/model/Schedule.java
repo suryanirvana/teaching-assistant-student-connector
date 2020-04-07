@@ -1,17 +1,25 @@
-package group2.TASC.core;
+package group2.TASC.model;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
+@Entity
 public class Schedule {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @NotNull
     private Date date;
+    @NotNull
     private String scheduleName;
+    @NotNull
     private int duration;
 
-    public Schedule(Date date, String scheduleName, int duration) {
-        this.date = date;
-        this.scheduleName = scheduleName;
-        this.duration = duration;
-    }
-
+    public Schedule() {}
 
     public Date getDate() {
         return date;
@@ -36,4 +44,8 @@ public class Schedule {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 }

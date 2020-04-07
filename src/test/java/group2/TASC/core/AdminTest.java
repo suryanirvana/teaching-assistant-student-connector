@@ -1,5 +1,7 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Schedule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -10,7 +12,14 @@ public class AdminTest {
     private static User admin = new Admin("Surya", "suryanirvana", "LaLiLuLeLo");
     private static User ta = new TeachingAssistant("Jane", "janey", "password");
     private static Date date = new Date();
-    private static Schedule schedule = new Schedule(date, "name", 2);
+    private static Schedule schedule = new Schedule();
+
+    @BeforeEach
+    void setUpSchedule() {
+        schedule.setDate(date);
+        schedule.setScheduleName("name");
+        schedule.setDuration(2);
+    }
 
     @Test
     void checkIfNameExist() {

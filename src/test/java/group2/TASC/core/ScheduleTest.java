@@ -1,13 +1,22 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Schedule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.scheduling.config.SchedulerBeanDefinitionParser;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Date;
 
 public class ScheduleTest {
     Date date = new Date();
-    Schedule Sched = new Schedule(date, "Adpro", 2);
+    Schedule Sched = new Schedule();
+
+    @BeforeEach
+    void setUpSchedule() {
+        Sched.setDate(date);
+        Sched.setScheduleName("Adpro");
+        Sched.setDuration(2);
+    }
 
     @Test
     void testScheduleNameExist() {

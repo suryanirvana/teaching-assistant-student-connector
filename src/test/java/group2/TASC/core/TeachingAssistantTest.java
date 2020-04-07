@@ -1,8 +1,9 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Schedule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +18,14 @@ public class TeachingAssistantTest {
     private static User student = new Student("Joe", "averagejoe", "password");
 
     private static Date date = new Date();
-    private static Schedule schedule = new Schedule(date, "name", 2);
+    private static Schedule schedule = new Schedule();
+
+    @BeforeEach
+    void setUpSchedule() {
+        schedule.setDate(date);
+        schedule.setScheduleName("name");
+        schedule.setDuration(2);
+    }
 
     @Test
     void nameTest() {
