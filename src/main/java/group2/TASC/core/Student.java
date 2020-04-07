@@ -1,5 +1,7 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Schedule;
+
 import java.util.ArrayList;
 
 class Student implements User {
@@ -9,6 +11,9 @@ class Student implements User {
     private String role;
     private ArrayList<Schedule> studentSchedule;
     private ArrayList<Appointment> studentAppointments;
+
+
+
     private ArrayList<Reminder> studentReminder;
 
     public Student(String name, String userName, String passWord) {
@@ -59,6 +64,10 @@ class Student implements User {
         // TODO
         Appointment new_appointment = new Appointment(this, TA, schedule);
         studentAppointments.add(new_appointment);
+    }
+
+    public ArrayList<Reminder> getStudentReminder() {
+        return studentReminder;
     }
 
     public void setReminder(Reminder reminder) {

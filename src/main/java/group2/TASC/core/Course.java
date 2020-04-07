@@ -1,5 +1,7 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Schedule;
+
 public class Course {
     private Schedule courseSchedule;
     private String courseName;
