@@ -21,6 +21,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Duration</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -28,6 +29,10 @@
                 <td th:text="${schedule.scheduleName}"></td>
                 <td th:text="${schedule.date}"></td>
                 <td th:text="${schedule.duration}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Edit </button>
+                    <button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Delete </button>
+                </td>
             </tr>
         </table>
         <br>
