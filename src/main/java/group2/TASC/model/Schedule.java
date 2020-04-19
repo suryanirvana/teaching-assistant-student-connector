@@ -1,27 +1,29 @@
 package group2.TASC.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Entity
+@Table(name="schedule")
 public class Schedule {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
+    @Column(name="date")
     private Date date;
 
     @NotNull
+    @Column(name="scheduleName")
     private String scheduleName;
+
     @NotNull
+    @Column(name="duration")
     private int duration;
 
     public Schedule() {}
