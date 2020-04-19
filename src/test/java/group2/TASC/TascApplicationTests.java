@@ -14,7 +14,7 @@ class TascApplicationTests {
     @Autowired
     MainController mainController;
 
-    @AutoConfigureTestDatabase
+    @Test
     void contextLoads() {
         TascApplication.main(new String[]{});
         assertThat(mainController).isNotNull();

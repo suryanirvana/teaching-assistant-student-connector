@@ -58,4 +58,11 @@ unitTests:
     - ./gradlew jacocoTestReport
     - cat build/jacocoHtml/index.html
   coverage: '/Total.*?([0-9]{1,3})%/'
+  services:
+    - postgres:12.2-alpine
+  variables:
+    POSTGRES_DB: nice_marmot
+    POSTGRES_USER: runner
+    POSTGRES_PASSWORD: ""
+    POSTGRES_HOST_AUTH_METHOD: trust
 
