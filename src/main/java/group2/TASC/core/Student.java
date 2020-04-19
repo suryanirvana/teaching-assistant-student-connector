@@ -9,11 +9,7 @@ class Student extends StudentCreateAppointment implements User {
     private String userName;
     private String passWord;
     private String role;
-    private ArrayList<Schedule> studentSchedule;
-    private ArrayList<Appointment> studentAppointments;
-
-
-
+    private Calendar studentCalendar;
     private ArrayList<Reminder> studentReminder;
 
     public Student(String name, String userName, String passWord) {
@@ -21,8 +17,7 @@ class Student extends StudentCreateAppointment implements User {
         this.userName = userName;
         this.passWord = passWord;
         this.role = "Student";
-        this.studentSchedule = new ArrayList<>();
-        this.studentAppointments = new ArrayList<>();
+        this.studentCalendar = new Calendar();
         this.studentReminder = new ArrayList<>();
     }
 
@@ -63,7 +58,7 @@ class Student extends StudentCreateAppointment implements User {
     public void createAppointment(Student student, TeachingAssistant TA, Schedule schedule) {
         // TODO
         Appointment new_appointment = new Appointment(this, TA, schedule);
-        studentAppointments.add(new_appointment);
+        studentCalendar.getAppointmentArrayList().add(new_appointment);
     }
 
     public ArrayList<Reminder> getStudentReminder() {
@@ -74,15 +69,7 @@ class Student extends StudentCreateAppointment implements User {
         // TODO
         this.studentReminder.add(reminder);
     }
-
-    public ArrayList<Appointment> getAppointments() {
-        // TODO
-        // do we need class appointment??
-        return this.studentAppointments;
-    }
-
-    public ArrayList<Schedule> getSchedule() {
-        // TODO
-        return this.studentSchedule;
+    public void addSchedule(Schedule schedule) {
+        this.studentCalendar.getScheduleArrayList().add(schedule);
     }
 }

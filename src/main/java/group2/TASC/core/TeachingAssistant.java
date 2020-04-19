@@ -9,11 +9,9 @@ class TeachingAssistant implements User {
     private String userName;
     private String passWord;
     private String role;
-    private ArrayList<Schedule> TASchedule;
-    private ArrayList<Appointment> TAAppointments;
+    private Calendar TACalendar;
     private ArrayList<Reminder> TAReminder;
     private ArrayList<Course> TACourse;
-
     private ArrayList<Message> messages;
 
     public TeachingAssistant(String name, String userName, String passWord) {
@@ -21,8 +19,7 @@ class TeachingAssistant implements User {
         this.userName = userName;
         this.passWord = passWord;
         this.role = "Teaching Assistant";
-        this.TASchedule = new ArrayList<>();
-        this.TAAppointments = new ArrayList<>();
+        this.TACalendar = new Calendar();
         this.TAReminder = new ArrayList<>();
         this.TACourse = new ArrayList<>();
         this.messages = new ArrayList<>();
@@ -69,20 +66,16 @@ class TeachingAssistant implements User {
 
     public void createAppointment(Student student, TeachingAssistant TA, Schedule schedule) {
         Appointment new_appointment = new Appointment(student, this, schedule);
-        TAAppointments.add(new_appointment);
+        this.TACalendar.getAppointmentArrayList().add(new_appointment);
     }
 
     public void addSchedule(Schedule schedule) {
-        TASchedule.add(schedule);
+        this.TACalendar.getScheduleArrayList().add(schedule);
     }
 
     public void setReminder(Reminder reminder) {
         // TODO
         this.TAReminder.add(reminder);
-    }
-
-    public ArrayList<Appointment> getAppointments() {
-        return this.TAAppointments;
     }
 
     public ArrayList<Reminder> getReminder() {
