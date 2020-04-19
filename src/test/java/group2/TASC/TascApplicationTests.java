@@ -15,7 +15,7 @@ class TascApplicationTests {
 
     @Test
     void contextLoads() {
-        TascApplication.main(new String[]{});
+//        TascApplication.main(new String[]{});
         assertThat(mainController).isNotNull();
     }
 
