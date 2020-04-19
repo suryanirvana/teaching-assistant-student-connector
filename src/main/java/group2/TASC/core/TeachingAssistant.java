@@ -3,8 +3,9 @@ package group2.TASC.core;
 import group2.TASC.model.Schedule;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-class TeachingAssistant implements User {
+class TeachingAssistant implements User, CreateAppointment {
     private String name;
     private String userName;
     private String passWord;
@@ -24,7 +25,6 @@ class TeachingAssistant implements User {
         this.TACourse = new ArrayList<>();
         this.messages = new ArrayList<>();
     }
-
 
     @Override
     public String getName() {
@@ -64,9 +64,12 @@ class TeachingAssistant implements User {
         return role;
     }
 
-    public void createAppointment(Student student, TeachingAssistant TA, Schedule schedule) {
-        Appointment new_appointment = new Appointment(student, this, schedule);
-        this.TACalendar.getAppointmentArrayList().add(new_appointment);
+    @Override
+    public void createAppointment(String name, Date date, int duration) {
+        Appointment appointment = new Appointment(this.studentHashMap.get(name), this);
+        appointment.setDate(date);
+        appointment.setDuration(duration);
+        TACalendar.getScheduleArrayList().add(appointment);
     }
 
     public void addSchedule(Schedule schedule) {

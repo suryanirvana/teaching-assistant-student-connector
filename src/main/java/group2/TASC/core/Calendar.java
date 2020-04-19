@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Calendar {
     private ArrayList<Schedule> scheduleArrayList = new ArrayList<>();
-    private ArrayList<Appointment> appointmentArrayList = new ArrayList<>();
 
     public Calendar() {
     }
@@ -17,13 +16,5 @@ public class Calendar {
 
     public void setScheduleArrayList(ArrayList<Schedule> scheduleArrayList) {
         this.scheduleArrayList = scheduleArrayList;
-    }
-
-    public ArrayList<Appointment> getAppointmentArrayList() {
-        return appointmentArrayList;
-    }
-
-    public void setAppointmentArrayList(ArrayList<Appointment> appointmentArrayList) {
-        this.appointmentArrayList = appointmentArrayList;
     }
 }

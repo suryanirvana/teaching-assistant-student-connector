@@ -2,14 +2,37 @@ package group2.TASC.core;
 
 import group2.TASC.model.Schedule;
 
-public class Appointment {
+public class Appointment extends Schedule {
     private TeachingAssistant TA;
     private Student student;
-    private Schedule schedule;
+    private long maximumNumberOfStudent;
 
-    public Appointment(Student student, TeachingAssistant TA, Schedule schedule) {
+    public Appointment(Student student, TeachingAssistant TA) {
         this.student = student;
         this.TA = TA;
-        this.schedule = schedule;
+    }
+
+    public void setMaximumNumberOfStudent(long maximumNumberOfStudent) {
+        this.maximumNumberOfStudent = maximumNumberOfStudent;
+    }
+
+    public TeachingAssistant getTA() {
+        return TA;
+    }
+
+    public void setTA(TeachingAssistant TA) {
+        this.TA = TA;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public long getMaximumNumberOfStudent() {
+        return maximumNumberOfStudent;
     }
 }
