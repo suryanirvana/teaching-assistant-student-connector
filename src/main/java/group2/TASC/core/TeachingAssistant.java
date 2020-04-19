@@ -88,14 +88,6 @@ class TeachingAssistant implements User {
         messages.add(new_message);
     }
 
-    public void deleteSchedule(Schedule schedule) {
-        TASchedule.remove(schedule);
-    }
-
-    public ArrayList<Schedule> getSchedule() {
-        return this.TASchedule;
-    }
-
     public ArrayList<Course> getCourse() {
         return this.TACourse;
     }
