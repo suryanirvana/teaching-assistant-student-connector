@@ -1,5 +1,6 @@
 package group2.TASC.core;
 
+import group2.TASC.controller.MainController;
 import group2.TASC.model.Schedule;
 import group2.TASC.repository.ScheduleRepo;
 import group2.TASC.service.ScheduleService;
