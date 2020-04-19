@@ -37,8 +37,8 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//    runtimeOnly('com.h2database:h2')
-    implementation('org.postgresql:postgresql')
+    runtimeOnly('com.h2database:h2')
+//    implementation('org.postgresql:postgresql')
 }
 
 test {

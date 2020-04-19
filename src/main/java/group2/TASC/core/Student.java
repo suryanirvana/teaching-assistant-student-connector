@@ -4,7 +4,7 @@ import group2.TASC.model.Schedule;
 
 import java.util.ArrayList;
 
-class Student implements User {
+class Student extends StudentCreateAppointment implements User {
     private String name;
     private String userName;
     private String passWord;
