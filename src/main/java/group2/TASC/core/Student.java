@@ -72,4 +72,8 @@ class Student extends StudentCreateAppointment implements User {
     public void addSchedule(Schedule schedule) {
         this.studentCalendar.getScheduleArrayList().add(schedule);
     }
+
+    public void deleteSchedule(Schedule schedule) {
+        studentCalendar.getScheduleArrayList().remove(schedule);
+    }
 }
