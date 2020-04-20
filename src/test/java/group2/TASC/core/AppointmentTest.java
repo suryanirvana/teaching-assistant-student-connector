@@ -8,7 +8,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AppointementTest {
+public class AppointmentTest {
     private static String studentName = "newStudent";
     private static String studentUserName = "StudentUserName";
 

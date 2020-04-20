@@ -51,31 +51,11 @@ public class TeachingAssistantTest {
         assertEquals(ta.getPassWord(), taPassword);
     }
 
-    @Test
-    void createAppointmentTest() {
-        ((TeachingAssistant) ta).createAppointment((Student) student, (TeachingAssistant) ta, schedule);
-        int temp = ((TeachingAssistant) ta).getAppointments().size();
-        assertEquals(temp, 2);
-    }
-
-    @Test
-    void getAppointmentTest() {
-        Appointment new_appointment = new Appointment((Student) student, (TeachingAssistant) ta, schedule);
-        ((TeachingAssistant) ta).getAppointments().add(new_appointment);
-        assertTrue(((TeachingAssistant) ta).getAppointments().contains(new_appointment));
-    }
 
     @Test
     void sendMessageTest() {
         ((TeachingAssistant) ta).sendRejectionMessage((Student) student, "test", "test");
         int temp = ((TeachingAssistant) ta).getMessages().size();
-        assertEquals(temp, 1);
-    }
-
-    @Test
-    void testAddSchedule() {
-        ((TeachingAssistant) ta).addSchedule(schedule);
-        int temp = ((TeachingAssistant) ta).getSchedule().size();
         assertEquals(temp, 1);
     }
 
@@ -92,14 +72,6 @@ public class TeachingAssistantTest {
         Reminder new_reminder = new Reminder(date,"test", 2);
         ((TeachingAssistant) ta).getReminder().add(new_reminder);
         assertTrue(((TeachingAssistant) ta).getReminder().contains(new_reminder));
-    }
-
-    @Test
-    void testDeleteSchedule() {
-        ((TeachingAssistant) ta).addSchedule(schedule);
-        ((TeachingAssistant) ta).deleteSchedule(schedule);
-        int temp = ((TeachingAssistant) ta).getSchedule().size();
-        assertEquals(temp, 0);
     }
 
     @Test

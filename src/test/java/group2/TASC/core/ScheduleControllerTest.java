@@ -54,7 +54,7 @@ public class ScheduleControllerTest {
     }
 
     @Test
-    void testIfAddScheduleError() throws Exception {
+    void testIfAddScheduleErrorThenStayAtForm() throws Exception {
         schedule.setScheduleName(null);
         this.mockMvc.perform(post("/addschedule")
                 .flashAttr("schedule", schedule)
@@ -64,7 +64,7 @@ public class ScheduleControllerTest {
     }
 
     @Test
-    void testIfAddScheduleSucceed() throws Exception {
+    void testIfAddScheduleSucceedThenShowSchedule() throws Exception {
         long id = 1234;
         schedule.setId(id);
         schedule.setScheduleName("Adpro");

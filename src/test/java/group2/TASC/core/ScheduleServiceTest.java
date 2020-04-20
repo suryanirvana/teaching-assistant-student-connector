@@ -45,12 +45,12 @@ public class ScheduleServiceTest {
     }
 
     @Test
-    void getListSchedule() {
+    void getScheduleList() {
         assertEquals(scheduleRepo.findAllByOrderByIdAsc().get(0).getId(), scheduleService.getAllSchedule().get(0).getId());
     }
 
     @Test
-    void testGetScheduleByIdFound() {
+    void testGetScheduleByIdAndScheduleExist() {
         try {
             assertEquals(schedule.getId(), scheduleService.getScheduleById(1234).getId());
         } catch (EntityNotFoundException e) {
@@ -63,7 +63,7 @@ public class ScheduleServiceTest {
     }
 
     @Test
-    void testUpdateScheduleIdNotFound() {
+    void testUpdateScheduleIdButScheduleDoesntExist() {
         schedule.setId((long)0);
         try {
             scheduleService.updateSchedule(schedule);
