@@ -34,10 +34,18 @@ Teaching Assistant Student Connector (TASC) is a web-based application for stude
 
 link heroku : ap2020group2.herokuapp.com
 
-## Role for phase 3
-Implement use case student can see and add schedule:
+## Role for Phase 3
+- Implement use case student can see and add schedule:
     - I Made Gede Surya Nirvana Prima (1806173550)
     - Tsamara Esperanti Erwin (1806173563)
-Implement use case student can edit and delete schedule:
+- Implement use case student can edit and delete schedule:
     - Ferdi Salim Sungkar (1806173576)
     - Aufa Wiandra Moenzil (1706067512)
+
+## Role for Phase 4
+- Found problems on our code & searched for the most suitable pattern to use
+    - Aufa Wiandra Moenzil (1706067512)
+    - Ferdi Salim Sungkar (1806173576)
+- Implemented design pattern
+    - I Made Gede Surya Nirvana Prima (1806173550)
+    - Tsamara Esperanti Erwin (1806173563)
