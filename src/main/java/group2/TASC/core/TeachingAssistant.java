@@ -14,6 +14,7 @@ class TeachingAssistant implements User, CreateAppointment {
     private ArrayList<Reminder> TAReminder;
     private ArrayList<Course> TACourse;
     private ArrayList<Message> messages;
+    private long preferedNoOfStudents;
 
     public TeachingAssistant(String name, String userName, String passWord) {
         this.name = name;
@@ -69,6 +70,7 @@ class TeachingAssistant implements User, CreateAppointment {
         Appointment appointment = new Appointment(this.studentHashMap.get(name), this);
         appointment.setDate(date);
         appointment.setDuration(duration);
+        appointment.setMaximumNumberOfStudent(this.getPreferedNoOfStudents());
         TACalendar.getScheduleArrayList().add(appointment);
     }
 
@@ -101,5 +103,13 @@ class TeachingAssistant implements User, CreateAppointment {
 
     public void setCourse(Course course) {
         this.TACourse.add(course);
+    }
+
+    public void setPreferedNoOfStudents(long preferedNoOfStudents) {
+        this.preferedNoOfStudents = preferedNoOfStudents;
+    }
+
+    public long getPreferedNoOfStudents() {
+        return preferedNoOfStudents;
     }
 }

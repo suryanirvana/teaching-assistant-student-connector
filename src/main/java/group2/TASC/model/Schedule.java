@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
+import java.time.*;
 
 @Entity
 @Table(name="schedule")
@@ -13,7 +14,7 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @NotNull
     @Column(name="date")
     private Date date;
@@ -55,4 +56,5 @@ public class Schedule {
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
+
 }

@@ -12,10 +12,6 @@ public class Appointment extends Schedule {
         this.TA = TA;
     }
 
-    public void setMaximumNumberOfStudent(long maximumNumberOfStudent) {
-        this.maximumNumberOfStudent = maximumNumberOfStudent;
-    }
-
     public TeachingAssistant getTA() {
         return TA;
     }
@@ -34,5 +30,9 @@ public class Appointment extends Schedule {
 
     public long getMaximumNumberOfStudent() {
         return maximumNumberOfStudent;
+    }
+
+    public void setMaximumNumberOfStudent(long maximumNumberOfStudent) {
+        this.maximumNumberOfStudent = maximumNumberOfStudent;
     }
 }
