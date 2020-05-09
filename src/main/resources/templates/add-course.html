@@ -30,6 +30,11 @@
                 <input type="text" th:field="*{courseName}" id="courseName" placeholder="Course Name">
                 <span th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}"></span>
             </div>
+            <div class="form-group">
+                 <br><br><br>
+              <button type="button" class="btn btn-dark" style="text-align: center;">
+               <input type="submit" value="Add Course"></button>
+            </div>
         </form>
     </div>
     <div class="col-sm"></div>

@@ -28,7 +28,7 @@ public class CourseController {
 
     @GetMapping("/")
     public String homepage(Model model) {
-        model.addAttribute(COURSE, courseService.getAllCourse());
+//        model.addAttribute(COURSE, courseService.getAllCourse());
         return INDEX;
     }
 
