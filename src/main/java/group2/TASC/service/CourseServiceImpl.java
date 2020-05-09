@@ -3,10 +3,12 @@ package group2.TASC.service;
 import group2.TASC.model.Course;
 import group2.TASC.repository.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@Service
 public class CourseServiceImpl implements CourseService {
 
     @Autowired
