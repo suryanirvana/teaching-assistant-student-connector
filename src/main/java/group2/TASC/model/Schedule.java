@@ -17,7 +17,7 @@ public class Schedule {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @NotNull
     @Column(name="date")
-    private Date date;
+    private LocalDate date;
 
     @NotNull
     @Column(name="scheduleName")
