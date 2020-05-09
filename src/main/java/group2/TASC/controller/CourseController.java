@@ -56,6 +56,34 @@ public class CourseController {
         }
         courseRepo.deleteById(id);
         model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
-        return INDEX;
+        return "see-course";
     }
+
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) throws Exception {
+        try {
+            courseRepo.findById(id);
+        } catch (Exception e) {
+            throw new Exception();
+        }
+//        Course course = courseRepo.findByCourseCode(id)
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
+        return "edit-course";
+    }
+
+//    @PostMapping("/update/{id}")
+//    public String updateUser(@PathVariable("id") long id, @Valid Course course,
+//                             BindingResult result, Model model) {
+//        Course updatedCourse = new Course();
+//        updatedCourse.setCourseCode(updatedCourse.getCourseCode());
+//        updatedCourse.setCourseName(updatedCourse.getCourseName());
+//        if (result.hasErrors()) {
+//            updatedCourse.setCourseCode(id);
+//            return "edit-course";
+//        }
+//        courseRepo.save(updatedCourse);
+//        model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
+//        return INDEX;
+//    }
 }

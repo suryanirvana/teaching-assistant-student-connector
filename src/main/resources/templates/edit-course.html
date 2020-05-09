@@ -12,28 +12,25 @@
     <div class="col-sm"></div>
     <div class="col-sm-10">
         <br><br><br>
-        <form action="#" th:action="@{/addschedule}" th:object="${schedule}" method="post"
+        <form th:action="@{/update/{courseCode}(id=${courseCode})}" th:object="${COURSE}" method="post"
               style="text-align: center;">
             <div class="form-group">
-                <label for="scheduleName">Schedule Name</label> <br>
-                <input type="text" th:field="*{scheduleName}" id="scheduleName" placeholder="Schedule Name">
-                <span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}"></span>
+                <label for="courseCode">Course Code</label> <br>
+                <input type="text" th:field="*{courseCode}" id="courseCode" placeholder="Course Code">
+                <span th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}"></span>
             </div>
             <br>
             <div class="form-group">
-                <label for="duration">Duration</label> <br>
-                <input type="text" th:field="*{duration}" id="duration" placeholder="Duration (in hours)">
-                <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
+                <label for="courseName">Course Name</label> <br>
+                <input type="text" th:field="*{courseName}" id="courseName" placeholder="Course Name">
+                <span th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}"></span>
             </div>
-            <br>
             <div class="form-group">
-                <label for="date">Date</label> <br>
-                <input type="date" th:field="*{date}" id="date" placeholder="Date">
-                <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
                 <br><br><br>
                 <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <input type="submit" value="Edit Schedule"></button>
+                    <input type="submit" value="Update Course"></button>
             </div>
+            <br><br>
         </form>
     </div>
     <div class="col-sm"></div>
