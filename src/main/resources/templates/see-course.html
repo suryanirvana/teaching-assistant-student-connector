@@ -28,8 +28,11 @@
                 <td th:text="${course.courseCode}"></td>
                 <td th:text="${course.courseName}"></td>
                 <td>
-                    <a href="/edit/{courseCode}(id=${course.courseCode})"><button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Edit </button></a>
-                    <a th:href="@{/delete/{courseCode}(id=${course.courseCode})}"><button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Delete </button></a>
+                    <a th:href="@{/edit/{courseCode}(courseCode=${course.courseCode})}"><button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;">
+                        Edit </button></a>
+                    <a th:href="@{/delete/{courseCode}(courseCode=${course.courseCode})}">
+                    <button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;">
+                        Delete </button></a>
                 </td>
             </tr>
             </tbody>
@@ -43,6 +46,10 @@
             <a href="/add/course" style="text-align: center; margin-left: 10px;">
                 <button type="button" class="btn btn-dark" style="text-align: center;">
                     <h3 style="text-align: center;"> Add Course </h3> </button>
+            </a>
+            <a href="/" style="text-align: center; margin-left: 10px;">
+                <button type="button" class="btn btn-dark" style="text-align: center;">
+                    <h3 style="text-align: center;"> Homepage </h3> </button>
             </a>
         </div>
         <div class="col"></div>

@@ -29,8 +29,13 @@ public class CourseController {
 
     @GetMapping("/")
     public String homepage(Model model) {
-        model.addAttribute(COURSE, courseService.getAllCourse());
         return INDEX;
+    }
+
+    @GetMapping("/seecourse")
+    public String schedulePage(Model model) {
+        model.addAttribute(COURSE, courseService.getAllCourse());
+        return "see-course";
     }
 
     @GetMapping("/add/course")
@@ -43,10 +48,9 @@ public class CourseController {
         if (result.hasErrors()) {
             return "add-course";
         }
-        courseRepo.save(course);
         courseService.addCourse(course);
         model.addAttribute(COURSE, courseService.getAllCourse());
-        return "see-course";
+        return "redirect:/seecourse";
     }
 
     @GetMapping("/delete/{courseCode}")
@@ -56,24 +60,44 @@ public class CourseController {
         } catch (Exception e) {
             throw new Exception();
         }
-        courseRepo.deleteById(courseCode);
         courseService.removeCourseById(courseCode);
         model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
-        return INDEX;
+        return "redirect:/seecourse";
     }
 
     @PostMapping("/update/{courseCode}")
     public String updateCourse(@PathVariable("courseCode") long courseCode, @Valid Course course,
                              BindingResult result, Model model) {
-        Course updatedCourse = new Course();
-        updatedCourse.setCourseCode(updatedCourse.getCourseCode());
-        updatedCourse.setCourseName(updatedCourse.getCourseName());
         if (result.hasErrors()) {
-            updatedCourse.setCourseCode(courseCode);
-            return "update-course";
+            course.setCourseCode(courseCode);
+            return "edit-course";
         }
-        courseRepo.save(updatedCourse);
-        model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
-        return INDEX;
+        courseService.updateCourse(course);
+        return "redirect:/seecourse";
     }
+
+    @GetMapping("/edit/{courseCode}")
+    public String showUpdateForm(@PathVariable("courseCode") long courseCode, Model model) throws Exception {
+        if(!courseRepo.existsById(courseCode)) {
+            throw new IllegalArgumentException("Invalid user Id:" + courseCode);
+        }
+        Course course = courseRepo.findByCourseCode(courseCode);
+        model.addAttribute(COURSE, course);
+        return "edit-course";
+    }
+
+//    @PostMapping("/update/{id}")
+//    public String updateUser(@PathVariable("id") long id, @Valid Course course,
+//                             BindingResult result, Model model) {
+//        Course updatedCourse = new Course();
+//        updatedCourse.setCourseCode(updatedCourse.getCourseCode());
+//        updatedCourse.setCourseName(updatedCourse.getCourseName());
+//        if (result.hasErrors()) {
+//            updatedCourse.setCourseCode(id);
+//            return "edit-course";
+//        }
+//        courseRepo.save(updatedCourse);
+//        model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
+//        return INDEX;
+//    }
 }
