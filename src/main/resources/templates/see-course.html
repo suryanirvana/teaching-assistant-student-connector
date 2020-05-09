@@ -24,12 +24,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="course:${course}">
+            <tr th:each="course:${COURSE}">
                 <td th:text="${course.courseCode}"></td>
                 <td th:text="${course.courseName}"></td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Edit </button>
-                    <button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Delete </button>
+                    <a href="/edit/{courseCode}(id=${course.courseCode})"><button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Edit </button></a>
+                    <a th:href="@{/delete/{courseCode}(id=${course.courseCode})}"><button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Delete </button></a>
                 </td>
             </tr>
             </tbody>

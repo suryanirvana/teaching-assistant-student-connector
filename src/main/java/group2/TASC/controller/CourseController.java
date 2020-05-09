@@ -25,10 +25,11 @@ public class CourseController {
     private static final String INDEX = "index";
     private static final String REDIRECT = "redirect:/";
     private static final String COURSE = "COURSE";
+    private static final String SCHEDULE = "SCHEDULE";
 
     @GetMapping("/")
     public String homepage(Model model) {
-//        model.addAttribute(COURSE, courseService.getAllCourse());
+        model.addAttribute(COURSE, courseService.getAllCourse());
         return INDEX;
     }
 
@@ -38,23 +39,40 @@ public class CourseController {
     }
 
     @PostMapping("/addcourse")
-    public String addUser(@Valid Course course, BindingResult result, Model model) {
+    public String addCourse(@Valid Course course, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-course";
         }
         courseRepo.save(course);
+        courseService.addCourse(course);
         model.addAttribute(COURSE, courseService.getAllCourse());
         return "see-course";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") long id, Model model) throws Exception {
+    @GetMapping("/delete/{courseCode}")
+    public String deleteCourse(@PathVariable("courseCode") long courseCode, Model model) throws Exception {
         try {
-            courseRepo.findById(id);
+            courseRepo.findById(courseCode);
         } catch (Exception e) {
             throw new Exception();
         }
-        courseRepo.deleteById(id);
+        courseRepo.deleteById(courseCode);
+        courseService.removeCourseById(courseCode);
+        model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
+        return INDEX;
+    }
+
+    @PostMapping("/update/{courseCode}")
+    public String updateCourse(@PathVariable("courseCode") long courseCode, @Valid Course course,
+                             BindingResult result, Model model) {
+        Course updatedCourse = new Course();
+        updatedCourse.setCourseCode(updatedCourse.getCourseCode());
+        updatedCourse.setCourseName(updatedCourse.getCourseName());
+        if (result.hasErrors()) {
+            updatedCourse.setCourseCode(courseCode);
+            return "update-course";
+        }
+        courseRepo.save(updatedCourse);
         model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
         return INDEX;
     }
