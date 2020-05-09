@@ -86,18 +86,4 @@ public class CourseController {
         return "edit-course";
     }
 
-//    @PostMapping("/update/{id}")
-//    public String updateUser(@PathVariable("id") long id, @Valid Course course,
-//                             BindingResult result, Model model) {
-//        Course updatedCourse = new Course();
-//        updatedCourse.setCourseCode(updatedCourse.getCourseCode());
-//        updatedCourse.setCourseName(updatedCourse.getCourseName());
-//        if (result.hasErrors()) {
-//            updatedCourse.setCourseCode(id);
-//            return "edit-course";
-//        }
-//        courseRepo.save(updatedCourse);
-//        model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
-//        return INDEX;
-//    }
 }
