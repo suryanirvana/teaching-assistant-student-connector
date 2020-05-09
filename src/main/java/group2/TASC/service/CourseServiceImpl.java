@@ -13,8 +13,8 @@ public class CourseServiceImpl implements CourseService {
     CourseRepo courseRepo;
 
     @Override
-    public List<Course> getAllSchedule() {
-        return courseRepo.findAllByOrOrderByCourseCodeAsc();
+    public List<Course> getAllCourse() {
+        return courseRepo.findAllByOrderByCourseCodeAsc();
     }
 
     @Override

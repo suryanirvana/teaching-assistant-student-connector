@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long courseCode;
     private String courseName;
 
