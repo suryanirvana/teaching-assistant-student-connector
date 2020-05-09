@@ -1,8 +1,11 @@
 package group2.TASC.controller;
 
 import group2.TASC.model.Course;
+import group2.TASC.model.User;
 import group2.TASC.repository.CourseRepo;
+import group2.TASC.repository.UserRepo;
 import group2.TASC.service.CourseService;
+import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +23,23 @@ public class CourseController {
     CourseRepo courseRepo;
 
     @Autowired
+    UserRepo userRepo;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
     CourseService courseService;
 
-    private static final String INDEX = "index";
+    private static final String BASE = "base";
     private static final String REDIRECT = "redirect:/";
     private static final String COURSE = "COURSE";
     private static final String SCHEDULE = "SCHEDULE";
+    private static final String USER = "USER";
 
     @GetMapping("/")
     public String homepage(Model model) {
-        return INDEX;
+        return BASE;
     }
 
     @GetMapping("/seecourse")
@@ -41,6 +51,25 @@ public class CourseController {
     @GetMapping("/add/course")
     public String showAddCourseForm(Course course) {
         return "add-course";
+    }
+
+    @GetMapping("/signup")
+    public String showSignUpForm(User user) {
+        return "sign-up";
+    }
+
+    @GetMapping("/home")
+    public String showHomepage() {
+        return "index";
+    }
+
+    @PostMapping("/adduser")
+    public String addUser(@Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "add-user";
+        }
+        userRepo.save(user);
+        return REDIRECT;
     }
 
     @PostMapping("/addcourse")
@@ -85,19 +114,4 @@ public class CourseController {
         model.addAttribute(COURSE, course);
         return "edit-course";
     }
-
-//    @PostMapping("/update/{id}")
-//    public String updateUser(@PathVariable("id") long id, @Valid Course course,
-//                             BindingResult result, Model model) {
-//        Course updatedCourse = new Course();
-//        updatedCourse.setCourseCode(updatedCourse.getCourseCode());
-//        updatedCourse.setCourseName(updatedCourse.getCourseName());
-//        if (result.hasErrors()) {
-//            updatedCourse.setCourseCode(id);
-//            return "edit-course";
-//        }
-//        courseRepo.save(updatedCourse);
-//        model.addAttribute(COURSE, courseRepo.findAllByOrderByCourseCodeAsc());
-//        return INDEX;
-//    }
 }
