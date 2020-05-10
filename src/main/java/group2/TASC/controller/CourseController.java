@@ -3,9 +3,7 @@ package group2.TASC.controller;
 import group2.TASC.model.Course;
 import group2.TASC.model.User;
 import group2.TASC.repository.CourseRepo;
-import group2.TASC.repository.UserRepo;
 import group2.TASC.service.CourseService;
-import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.Valid;
 
@@ -24,15 +22,9 @@ public class CourseController {
     CourseRepo courseRepo;
 
     @Autowired
-    UserRepo userRepo;
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
     CourseService courseService;
 
-    protected BCryptPasswordEncoder bCryptPasswordEncoder;
+//    protected BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final String BASE = "base";
     private static final String REDIRECT = "redirect:/";
@@ -66,15 +58,15 @@ public class CourseController {
         return "index";
     }
 
-    @PostMapping("/adduser")
-    public String addUser(@Valid User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "add-user";
-        }
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepo.save(user);
-        return REDIRECT;
-    }
+//    @PostMapping("/adduser")
+//    public String addUser(@Valid User user, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            return "add-user";
+//        }
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        userRepo.save(user);
+//        return REDIRECT;
+//    }
 
     @PostMapping("/addcourse")
     public String addCourse(@Valid Course course, BindingResult result, Model model) {
