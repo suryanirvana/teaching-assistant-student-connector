@@ -38,7 +38,7 @@ public class CourseController {
     }
 
     @GetMapping("/seecourse")
-    public String schedulePage(Model model) {
+    public String coursePage(Model model) {
         model.addAttribute(COURSE, courseService.getAllCourse());
         return "see-course";
     }
@@ -48,10 +48,10 @@ public class CourseController {
         return "add-course";
     }
 
-    @GetMapping("/signup")
-    public String showSignUpForm(User user) {
-        return "sign-up";
-    }
+//    @GetMapping("/signup")
+//    public String showSignUpForm() {
+//        return "sign-up";
+//    }
 
     @GetMapping("/home")
     public String showHomepage() {
@@ -94,7 +94,6 @@ public class CourseController {
     public String updateCourse(@PathVariable("courseCode") long courseCode, @Valid Course course,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
-            course.setCourseCode(courseCode);
             return "edit-course";
         }
         courseService.updateCourse(course);
@@ -104,7 +103,7 @@ public class CourseController {
     @GetMapping("/edit/{courseCode}")
     public String showUpdateForm(@PathVariable("courseCode") long courseCode, Model model) throws Exception {
         if(!courseRepo.existsById(courseCode)) {
-            throw new IllegalArgumentException("Invalid user Id:" + courseCode);
+            throw new IllegalArgumentException("Invalid course Id:" + courseCode);
         }
         Course course = courseRepo.findByCourseCode(courseCode);
         model.addAttribute(COURSE, course);

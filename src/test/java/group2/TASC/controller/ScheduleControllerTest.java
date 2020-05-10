@@ -41,11 +41,27 @@ public class ScheduleControllerTest {
 
     private static Schedule schedule = new Schedule();
 
+    @BeforeEach
+    void setUpSchedule() {
+        schedule.setScheduleName("Test");
+        schedule.setDuration(2);
+        schedule.setDate(LocalDate.of(2020, 05,10));
+        schedule.setDuration(2);
+        scheduleService.addSchedule(schedule);
+    }
+
     @Test
     void testHomepage() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("base"));
+    }
+
+    @Test
+    void testSchedulePage() throws Exception {
+        this.mockMvc.perform(get("/seeschedule"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("see-schedule"));
     }
 
     @Test
@@ -56,13 +72,20 @@ public class ScheduleControllerTest {
     }
 
     @Test
-    void testIfAddScheduleErrorThenStayAtForm() throws Exception {
+    void testIfAddScheduleErrorThenStayAtFormAndAddScheduleValid() throws Exception {
         schedule.setScheduleName(null);
         this.mockMvc.perform(post("/addschedule")
                 .flashAttr("schedule", schedule)
                 .flashAttr("result", bindingResult)
                 .flashAttr("model", model))
                 .andExpect(view().name("add-schedule"));
+
+        schedule.setScheduleName("AP");
+        this.mockMvc.perform(post("/addschedule")
+                .flashAttr("schedule", schedule)
+                .flashAttr("result", bindingResult)
+                .flashAttr("model", model))
+                .andExpect(view().name("redirect:/seeschedule"));
     }
 
     @Test
