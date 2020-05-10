@@ -47,6 +47,11 @@ public class Student extends User implements CreateAppointment {
     }
 
     public void deleteSchedule(Schedule schedule) {
-        studentCalendar.getScheduleArrayList().remove(schedule);
+        for (int i = 0; i < this.studentCalendar.getScheduleArrayList().size(); i++) {
+            if (this.studentCalendar.getScheduleArrayList().get(i).equals(schedule)) {
+                this.studentCalendar.getScheduleArrayList().remove(i);
+                break;
+            }
+        }
     }
 }

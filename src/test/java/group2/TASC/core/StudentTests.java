@@ -12,11 +12,11 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentTests {
-    private static final User student = new Student("Joe", "averagejoe", "password");
+    private static final Student student = new Student("Joe", "averagejoe", "password");
     String name = "Joe";
     String username = "averagejoe";
     String password = "password";
-    private static User ta = new TeachingAssistant("Jane", "janey", "password");
+    private static TeachingAssistant ta = new TeachingAssistant("Jane", "janey", "password");
 
     private static LocalDate date = LocalDate.of(2020, 05,10);
     private static Schedule schedule = new Schedule();
@@ -37,21 +37,40 @@ public class StudentTests {
     @Test
     void testSetReminder() {
         Reminder reminder = new Reminder(date, "test", 2);
-        ((Student) student).setReminder(reminder);
-        int temp = ((Student) student).getStudentReminder().size();
+        student.setReminder(reminder);
+        int temp = student.getStudentReminder().size();
         assertEquals(temp, 1);
     }
 
     @Test
     void testGetReminder() {
         Reminder new_reminder = new Reminder(date, "test", 2);
-        ((Student) student).getStudentReminder().add(new_reminder);
-        assertTrue(((Student) student).getStudentReminder().contains(new_reminder));
+        student.getStudentReminder().add(new_reminder);
+        assertTrue(student.getStudentReminder().contains(new_reminder));
     }
 
     @Test
     void testGetRole() {
-        assertEquals(((Student) student).getRole(),"Student");
+        assertEquals(student.getRole(),"Student");
     }
 
+    @Test
+    void testAddScheduleToStudentCalendar() {
+        student.addSchedule(schedule);
+        assertEquals(1, student.getStudentCalendar().getScheduleArrayList().size());
+    }
+
+    @Test
+    void testDeleteScheduleToStudentCalendar() {
+        student.addSchedule(schedule);
+        student.addSchedule(schedule);
+        student.deleteSchedule(schedule);
+        assertEquals(1, student.getStudentCalendar().getScheduleArrayList().size());
+    }
+
+    @Test
+    void testCreateAppointmentWithTA() {
+        student.createAppointment("Jane", date, 2);
+        assertEquals(2, student.getStudentCalendar().getScheduleArrayList().size());
+    }
 }
