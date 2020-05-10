@@ -1,7 +1,10 @@
 package group2.TASC.controller;
 
+import group2.TASC.model.Course;
 import group2.TASC.model.Schedule;
+import group2.TASC.repository.CourseRepo;
 import group2.TASC.repository.ScheduleRepo;
+import group2.TASC.service.CourseService;
 import group2.TASC.service.ScheduleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ScheduleControllerTest {
+public class CourseControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -34,60 +37,63 @@ public class ScheduleControllerTest {
     private Model model;
 
     @MockBean
-    private ScheduleRepo scheduleRepo;
+    private CourseRepo courseRepo;
 
     @Autowired
-    private ScheduleService scheduleService;
+    private CourseService courseService;
 
-    private static Schedule schedule = new Schedule();
-
-    @Test
-    void testHomepage() throws Exception {
-        this.mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("base"));
-    }
+    private static Course course = new Course();
 
     @Test
-    void testShowScheduleForm() throws Exception {
-        this.mockMvc.perform(get("/add/schedule"))
+    void testShowCourseForm() throws Exception {
+        this.mockMvc.perform(get("/add/course"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("add-schedule"));
+                .andExpect(view().name("add-course"));
     }
 
     @Test
     void testIfAddScheduleErrorThenStayAtForm() throws Exception {
-        schedule.setScheduleName(null);
-        this.mockMvc.perform(post("/addschedule")
-                .flashAttr("schedule", schedule)
+        course.setCourseName(null);
+        this.mockMvc.perform(post("/addcourse")
+                .flashAttr("course", course)
                 .flashAttr("result", bindingResult)
                 .flashAttr("model", model))
-                .andExpect(view().name("add-schedule"));
+                .andExpect(view().name("add-course"));
     }
 
     @Test
-    void testIfDeleteScheduleSucceedThenShowSchedule() throws Exception {
+    void testIfDeleteCourseSucceedThenShowCourse() throws Exception {
         long id = 1234;
-        schedule.setId(id);
-        schedule.setDate(LocalDate.of(2020,4,24));
-        schedule.setDuration(2);
-        schedule.setScheduleName("Adpro");
-        scheduleService.removeScheduleById(1234);
-        this.mockMvc.perform(get("/delete-schedule/1234"))
+        course.setCourseCode(id);
+        course.setCourseName("Adpro");
+        courseService.removeCourseById(id);
+        this.mockMvc.perform(get("/delete/1234"))
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/seeschedule"));
+                .andExpect(view().name("redirect:/seecourse"));
     }
 
     @Test
-    public void testIfDeleteScheduleButInvalidIdThenRaiseException() throws Exception {
+    public void testIfDeleteCourseButInvalidIdThenRaiseException() throws Exception {
         try {
-            this.mockMvc.perform(get("/delete-schedule/99"))
+            this.mockMvc.perform(get("/delete/99"))
                     .andExpect(status().isFound())
-                    .andExpect(view().name("redirect:/seeschedule"));
+                    .andExpect(view().name("redirect:/seecourse"));
         } catch (Exception e) {
             assertEquals("Request processing failed; nested exception is java.lang.IllegalArgumentException: Invalid user Id:99", e.getMessage());
         }
     }
+
+//    @Test
+//    public void testUpdateCourseValidThenRedirectSeeCourse() throws Exception {
+//        course.setCourseCode(11);
+//        course.setCourseName("Adpro");
+//        this.mockMvc.perform(post("/update/" + course.getCourseCode())
+//                .flashAttr("user", course)
+//                .flashAttr("result", bindingResult)
+//                .flashAttr("model", model))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("redirect:/seecourse"));
+//    }
 
 
 }

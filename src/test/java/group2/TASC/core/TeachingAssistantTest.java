@@ -29,4 +29,24 @@ public class TeachingAssistantTest {
         schedule.setScheduleName("name");
         schedule.setDuration(2);
     }
+
+
+    @Test
+    void nameTest() {
+        ta.setName(taName);
+        assertEquals(ta.getName(), taName);
+    }
+
+    @Test
+    void sendMessageTest() {
+        ((TeachingAssistant) ta).sendRejectionMessage((Student) student, "test", "test");
+        int temp = ((TeachingAssistant) ta).getMessages().size();
+        assertEquals(temp, 1);
+    }
+
+    @Test
+    void testGetRole() {
+        assertEquals(((TeachingAssistant) ta).getRole(), "Teaching Assistant");
+    }
+
 }

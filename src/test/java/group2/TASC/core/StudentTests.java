@@ -12,7 +12,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentTests {
-    private static User student = new Student("Joe", "averagejoe", "password");
+    private static final User student = new Student("Joe", "averagejoe", "password");
     String name = "Joe";
     String username = "averagejoe";
     String password = "password";
@@ -27,4 +27,31 @@ public class StudentTests {
         schedule.setScheduleName("name");
         schedule.setDuration(2);
     }
+
+    @Test
+    void nameTest() {
+        student.setName(name);
+        assertEquals(student.getName(), name);
+    }
+
+    @Test
+    void testSetReminder() {
+        Reminder reminder = new Reminder(date, "test", 2);
+        ((Student) student).setReminder(reminder);
+        int temp = ((Student) student).getStudentReminder().size();
+        assertEquals(temp, 1);
+    }
+
+    @Test
+    void testGetReminder() {
+        Reminder new_reminder = new Reminder(date, "test", 2);
+        ((Student) student).getStudentReminder().add(new_reminder);
+        assertTrue(((Student) student).getStudentReminder().contains(new_reminder));
+    }
+
+    @Test
+    void testGetRole() {
+        assertEquals(((Student) student).getRole(),"Student");
+    }
+
 }
