@@ -18,19 +18,10 @@ public class AppointmentTest {
 
     private static String password = "123";
 
-    private static LocalDate date = LocalDate.of(2020, 05,10);
-    private static String scheduleName = "schedule";
-    private static int scheduleDuration = 2;
-
-
-    private static TeachingAssistant ta = new TeachingAssistant(TAName, TAUserName, password);
-    private static Student student = new Student(studentName, studentUserName, password);
-    private static Schedule schedule = new Schedule();
-
-    @BeforeEach
-    void setUpSchedule() {
-        schedule.setDate(date);
-        schedule.setScheduleName(scheduleName);
-        schedule.setDuration(scheduleDuration);
+    @Test
+    void testIfCanCreateNewAppointmentObject() {
+        Student student = new Student(studentName, studentUserName, password);
+        TeachingAssistant ta = new TeachingAssistant(TAName, TAUserName, password);
+        Appointment appointment = new Appointment(student, ta);
     }
 }

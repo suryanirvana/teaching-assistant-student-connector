@@ -3,8 +3,7 @@ package group2.TASC.core;
 import group2.TASC.model.Course;
 import group2.TASC.model.Schedule;
 import group2.TASC.model.User;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

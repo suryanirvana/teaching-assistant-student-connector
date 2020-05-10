@@ -38,10 +38,6 @@ public class Student extends User implements CreateAppointment {
         studentCalendar.getScheduleArrayList().add(appointment);
     }
 
-    public ArrayList<Reminder> getStudentReminder() {
-        return studentReminder;
-    }
-
     public void setReminder(Reminder reminder) {
         // TODO
         this.studentReminder.add(reminder);

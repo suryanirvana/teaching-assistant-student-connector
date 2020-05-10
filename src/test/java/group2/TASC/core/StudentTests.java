@@ -27,10 +27,4 @@ public class StudentTests {
         schedule.setScheduleName("name");
         schedule.setDuration(2);
     }
-
-    @Test
-    void whenSettingThePasswordItShouldBeMoreThan8Characters() {
-        student.setPassword("passwordNew");
-        assertTrue(student.getPassword().length()>8);
-    }
 }

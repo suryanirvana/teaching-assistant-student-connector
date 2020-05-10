@@ -8,8 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class MessageTest {
-
-    private static Student recipient = new Student("newStudent", "studentUserName", "password");
-    private Message message = new Message(recipient, "Title", "testMessage");
-
+    @Test
+    void testIfCanCreateNewMessageObject() {
+        Student recipient = new Student("newStudent", "studentUserName", "password");
+        Message message = new Message(recipient, "Title", "testMessage");
+    }
 }

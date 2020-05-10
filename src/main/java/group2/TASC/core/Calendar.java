@@ -13,9 +13,4 @@ public class Calendar {
 
     public Calendar() {
     }
-
-    public ArrayList<Schedule> getScheduleArrayList() {
-        return scheduleArrayList;
-    }
-
 }

@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class ReminderTest {
-    LocalDate date = LocalDate.of(2020, 05,10);
-    Reminder reminder= new Reminder(date, "Adpro", 2);
+    @Test
+    void testIfCanCreateNewReminderObject() {
+        LocalDate date = LocalDate.of(2020, 05, 10);
+        Reminder reminder = new Reminder(date, "Adpro", 2);
+    }
 }
