@@ -10,5 +10,6 @@ import java.util.List;
 public interface UserRepo extends CrudRepository<User, Long> {
     List<User> findAllByOrderByStudentIdAsc();
     User findByStudentId(long id);
+    User findByUsername(String username);
 }
 

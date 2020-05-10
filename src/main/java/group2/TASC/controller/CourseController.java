@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.Valid;
 
@@ -30,6 +31,8 @@ public class CourseController {
 
     @Autowired
     CourseService courseService;
+
+    protected BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final String BASE = "base";
     private static final String REDIRECT = "redirect:/";
@@ -68,6 +71,7 @@ public class CourseController {
         if (result.hasErrors()) {
             return "add-user";
         }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepo.save(user);
         return REDIRECT;
     }
