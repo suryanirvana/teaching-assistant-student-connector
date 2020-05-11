@@ -52,6 +52,6 @@ link heroku : ap2020group2.herokuapp.com
 
 ## Role for Phase 5
 - Aufa Wiandra Moenzil (1706067512)             : 
-- Ferdi Salim Sungkar (1806173576)              :
+- Ferdi Salim Sungkar (1806173576)              : 
 - I Made Gede Surya Nirvana Prima (1806173550)  : added implementation for "Add course", added more tests cases, setup profiling with micrometers and prometheus
-- Tsamara Esperanti Erwin (1806173563)          : 
+- Tsamara Esperanti Erwin (1806173563)          : implement configure schedule, add test cases
