@@ -12,11 +12,13 @@ import java.util.Date;
 @Getter
 @Setter
 public class Student extends User implements CreateAppointment {
+    private Calendar studentCalendar = new Calendar();
+
+
     private String name;
     private String username;
     private String password;
     private String role;
-    private Calendar studentCalendar;
     private ArrayList<Reminder> studentReminder;
 
     public Student(String name, String userName, String passWord) {
@@ -24,7 +26,6 @@ public class Student extends User implements CreateAppointment {
         this.username = userName;
         this.password = passWord;
         this.role = "Student";
-        this.studentCalendar = new Calendar();
         this.studentReminder = new ArrayList<>();
         this.getStudentHashMap().put(name, this);
     }
@@ -47,6 +48,6 @@ public class Student extends User implements CreateAppointment {
     }
 
     public void deleteSchedule(Schedule schedule) {
-        studentCalendar.getScheduleArrayList().remove(schedule);
+        this.studentCalendar.getScheduleArrayList().remove(schedule);
     }
 }

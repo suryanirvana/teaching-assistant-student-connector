@@ -44,6 +44,13 @@ public class CourseControllerTest {
 
     private static Course course = new Course();
 
+    @BeforeEach
+    void setUpCourse() {
+        course.setCourseCode(10);
+        course.setCourseName("Test");
+        courseService.addCourse(course);
+    }
+
     @Test
     void testShowCourseForm() throws Exception {
         this.mockMvc.perform(get("/add/course"))
@@ -52,30 +59,38 @@ public class CourseControllerTest {
     }
 
     @Test
-    void testIfAddScheduleErrorThenStayAtForm() throws Exception {
+    void testIfAddScheduleErrorThenStayAtFormAndAddScheduleValidThenRedirectToSeeCoursePage() throws Exception {
         course.setCourseName(null);
         this.mockMvc.perform(post("/addcourse")
                 .flashAttr("course", course)
                 .flashAttr("result", bindingResult)
                 .flashAttr("model", model))
                 .andExpect(view().name("add-course"));
+
+        course.setCourseName("Adpro");
+        this.mockMvc.perform(post("/addcourse")
+                .flashAttr("course", course)
+                .flashAttr("result", bindingResult)
+                .flashAttr("model", model))
+                .andExpect(view().name("redirect:/seecourse"));
     }
 
     @Test
     void testIfDeleteCourseSucceedThenShowCourse() throws Exception {
-        long id = 1234;
-        course.setCourseCode(id);
-        course.setCourseName("Adpro");
-        courseService.removeCourseById(id);
-        this.mockMvc.perform(get("/delete/1234"))
+        this.mockMvc.perform(get("/delete/10"))
                 .andExpect(status().isFound())
                 .andExpect(view().name("redirect:/seecourse"));
     }
 
     @Test
     public void testIfDeleteCourseButInvalidIdThenRaiseException() throws Exception {
+        Course new_course = new Course();
+        new_course.setCourseCode(1001);
+        new_course.setCourseName("Testt");
+        courseService.addCourse(new_course);
+        courseService.removeCourseById(1001);
         try {
-            this.mockMvc.perform(get("/delete/99"))
+            this.mockMvc.perform(get("/delete/1001"))
                     .andExpect(status().isFound())
                     .andExpect(view().name("redirect:/seecourse"));
         } catch (Exception e) {
@@ -83,17 +98,37 @@ public class CourseControllerTest {
         }
     }
 
+    @Test
+    void testShowSeeCoursePage() throws Exception {
+        this.mockMvc.perform(get("/seecourse"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("see-course"));
+    }
+
+    @Test
+    void testShowHomepage() throws Exception {
+        this.mockMvc.perform(get("/home"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"));
+    }
+
+//    @Test
+//    void testShowSignUpForm() throws Exception {
+//        this.mockMvc.perform(get("/signup"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("sign-up"));
+//    }
+
 //    @Test
 //    public void testUpdateCourseValidThenRedirectSeeCourse() throws Exception {
-//        course.setCourseCode(11);
-//        course.setCourseName("Adpro");
-//        this.mockMvc.perform(post("/update/" + course.getCourseCode())
+//        Course new_course = new Course();
+//        new_course.setCourseCode(1001);
+//        new_course.setCourseName("Testt");
+//        this.mockMvc.perform(post("/update/1001")
 //                .flashAttr("user", course)
 //                .flashAttr("result", bindingResult)
 //                .flashAttr("model", model))
 //                .andExpect(status().isOk())
-//                .andExpect(view().name("redirect:/seecourse"));
+//                .andExpect(view().name("see-course"));
 //    }
-
-
 }

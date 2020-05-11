@@ -29,7 +29,6 @@ public class ScheduleServiceTest {
     @BeforeEach
     void setUpSchedule() {
         schedule = new Schedule();
-        schedule.setId((long)1234);
         schedule.setScheduleName("Adpro");
         schedule.setDate(LocalDate.of(2020, 05,10));
         schedule.setDuration(2);
@@ -37,9 +36,16 @@ public class ScheduleServiceTest {
     }
 
     @Test
-    void testGetScheduleByIdNotFound() {
+    void testGetScheduleByIdNotFoundAndUpdateScheduleByIdNotFound() {
         try {
             scheduleService.getScheduleById(1234);
+        } catch (EntityNotFoundException ex){
+            assertNull(ex.getMessage());
+        }
+
+        try {
+            schedule.setId((long)1234);
+            scheduleService.updateSchedule(schedule);
         } catch (EntityNotFoundException ex){
             assertNull(ex.getMessage());
         }
@@ -51,26 +57,20 @@ public class ScheduleServiceTest {
     }
 
     @Test
-    void testGetScheduleByIdAndScheduleExist() {
-        try {
-            assertEquals(schedule.getId(), scheduleService.getScheduleById(1234).getId());
-        } catch (EntityNotFoundException e) {
-            assertNull(e.getMessage());
-        }
+    void testGetScheduleByIdAndUpdateScheduleByIdAndScheduleExist() {
+        Schedule scheduletest = new Schedule();
+        scheduletest.setScheduleName("Adpro");
+        scheduletest.setDate(LocalDate.of(2020, 05,10));
+        scheduletest.setDuration(2);
+        scheduleService.addSchedule(scheduletest);
+        assertEquals(scheduletest.getId(), scheduleService.getScheduleById(4).getId());
+
+        scheduletest.setDuration(10);
+        scheduleService.updateSchedule(scheduletest);
+        assertEquals(10, scheduleService.getScheduleById(4).getDuration());
     }
 
     @Test void testRemoveScheduleById() {
         scheduleRepo.delete(schedule);
     }
-
-    @Test
-    void testUpdateScheduleIdButScheduleDoesntExist() {
-        schedule.setId((long)0);
-        try {
-            scheduleService.updateSchedule(schedule);
-        } catch (EntityNotFoundException e) {
-            assertNull(e.getMessage());
-        }
-    }
-
 }

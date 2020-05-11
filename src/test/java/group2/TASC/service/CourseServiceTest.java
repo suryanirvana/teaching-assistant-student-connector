@@ -39,7 +39,14 @@ public class CourseServiceTest {
     @Test
     void testGetCourseByIdNotFound() {
         try {
-            courseService.getCourseById(123);
+            courseService.getCourseById(1234);
+        } catch (EntityNotFoundException ex) {
+            assertNull(ex.getMessage());
+        }
+
+        try {
+            course.setCourseCode(1234);
+            courseService.updateCourse(course);
         } catch (EntityNotFoundException ex) {
             assertNull(ex.getMessage());
         }
@@ -52,26 +59,20 @@ public class CourseServiceTest {
     }
 
     @Test
-    void testGetCourseByIdAndScheduleExist() {
-        try {
-            assertEquals(course.getCourseCode(), courseService.getCourseById(123).getCourseCode());
-        } catch (EntityNotFoundException e) {
-            assertNull(e.getMessage());
-        }
+    void testGetCourseByIdAndUpdateCourseByIdAndScheduleExist() {
+        Course coursetest = new Course();
+        coursetest.setCourseCode(123);
+        coursetest.setCourseName("Adpro");
+        courseService.addCourse(coursetest);
+        assertEquals(coursetest.getCourseCode(), courseService.getCourseById(123).getCourseCode());
+
+        coursetest.setCourseName("AP");
+        courseService.updateCourse(coursetest);
+        assertEquals("AP", courseService.getCourseById(123).getCourseName());
     }
 
     @Test
     void testRemoveCourseById() {
         courseRepo.delete(course);
-    }
-
-    @Test
-    void testUpdateCourseIdButScheduleDoesntExist() {
-        course.setCourseCode((long) 0);
-        try {
-            courseService.updateCourse(course);
-        } catch (EntityNotFoundException e) {
-            assertNull(e.getMessage());
-        }
     }
 }
