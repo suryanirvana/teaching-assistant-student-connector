@@ -2,6 +2,7 @@ package group2.TASC.controller;
 
 import group2.TASC.model.Schedule;
 import group2.TASC.repository.ScheduleRepo;
+import group2.TASC.service.MailerService;
 import group2.TASC.service.ScheduleService;
 import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class ScheduleController {
 
     @Autowired
     ScheduleService scheduleService;
+
+    MailerService mailerService;
 
     private static final String INDEX = "index";
     private static final String REDIRECT = "redirect:/";
@@ -45,6 +48,10 @@ public class ScheduleController {
         }
         scheduleService.addSchedule(schedule);
         model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
+
+//        String content = "New schedule added" + schedule.getScheduleName();
+//        mailerService.sendEmail("tasc.group2@gmail.com", "You have added a new course", String.format("New schedule added" + schedule.getScheduleName()));
+
         return "redirect:/seeschedule";
     }
 
