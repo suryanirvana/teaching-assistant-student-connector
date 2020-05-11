@@ -3,6 +3,7 @@ package group2.TASC.controller;
 import group2.TASC.model.Schedule;
 import group2.TASC.repository.ScheduleRepo;
 import group2.TASC.service.ScheduleService;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,12 +27,14 @@ public class ScheduleController {
     private static final String REDIRECT = "redirect:/";
     private static final String SCHEDULE = "SCHEDULE";
 
+    @Timed("seeschedule")
     @GetMapping("/seeschedule")
     public String schedulePage(Model model) {
         model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
         return "see-schedule";
     }
 
+    @Timed("addschedule")
     @GetMapping("/add/schedule")
     public String showAddScheduleForm(Schedule schedule) {
         return "add-schedule";
@@ -47,6 +50,7 @@ public class ScheduleController {
         return "redirect:/seeschedule";
     }
 
+    @Timed("deleteschedule")
     @GetMapping("/delete-schedule/{id}")
     public String deleteSchedule(@PathVariable("id") long id, Model model) throws Exception {
         try {
@@ -70,6 +74,7 @@ public class ScheduleController {
         return "redirect:/seeschedule";
     }
 
+    @Timed("editschedule")
     @GetMapping("/edit-schedule/{id}")
     public String showUpdateScheduleForm(@PathVariable("id") long id, Model model) throws Exception {
         if(!scheduleRepo.existsById(id)) {
