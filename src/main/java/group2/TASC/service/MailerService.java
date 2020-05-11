@@ -17,7 +17,7 @@ public class MailerService {
         MimeMessagePreparator mailMessage = mimeMessage -> {
             MimeMessageHelper message = new MimeMessageHelper(
                     mimeMessage, true, "UTF-8");
-            message.setFrom("tasc.group2@gmail.com", "TASC Group 2");
+            message.setFrom(System.getenv("EMAIL_USERNAME"), "TASC Group 2");
             message.setTo(to);
             message.setSubject(subject);
             message.setText(content);

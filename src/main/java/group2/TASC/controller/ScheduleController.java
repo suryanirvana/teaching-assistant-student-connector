@@ -46,11 +46,12 @@ public class ScheduleController {
         if (result.hasErrors()) {
             return "add-schedule";
         }
+
+        mailerService.sendEmail(System.getenv("TEST_EMAIL"), "You have added a new course",
+                "Successfully add new schedule");
+
         scheduleService.addSchedule(schedule);
         model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
-
-//        String content = "New schedule added" + schedule.getScheduleName();
-//        mailerService.sendEmail("tasc.group2@gmail.com", "You have added a new course", String.format("New schedule added" + schedule.getScheduleName()));
 
         return "redirect:/seeschedule";
     }
