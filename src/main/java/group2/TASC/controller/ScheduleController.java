@@ -24,6 +24,7 @@ public class ScheduleController {
     @Autowired
     ScheduleService scheduleService;
 
+    @Autowired
     MailerService mailerService;
 
     private static final String INDEX = "index";
@@ -47,8 +48,8 @@ public class ScheduleController {
             return "add-schedule";
         }
 
-//        mailerService.sendEmail(System.getenv("TEST_EMAIL"), "You have added a new course",
-//                "Successfully add new schedule");
+        mailerService.sendEmail(System.getenv("TEST_EMAIL"), "You have added a new course",
+                "Successfully add new schedule");
 
         scheduleService.addSchedule(schedule);
         model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
