@@ -7,14 +7,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Admin extends User {
+public class Admin {
     private String name;
     private String userName;
     private String passWord;
     private String role;
 
     public Admin(String name, String userName, String passWord) {
-        super();
+//        super();
         this.userName = userName;
         this.passWord = passWord;
         this.role = "Admin";

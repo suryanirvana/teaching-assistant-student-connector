@@ -2,9 +2,11 @@ package group2.TASC.controller;
 
 import group2.TASC.model.Course;
 import group2.TASC.model.User;
+import group2.TASC.model.UserDTO;
 import group2.TASC.repository.CourseRepo;
+import group2.TASC.repository.UserRepo;
 import group2.TASC.service.CourseService;
-import io.micrometer.core.annotation.Timed;
+import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
+    @Autowired
+    UserService userService;
+
 //    protected BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final String BASE = "base";
@@ -38,6 +43,7 @@ public class CourseController {
         return BASE;
     }
 
+
     @GetMapping("/seecourse")
     public String coursePage(Model model) {
         model.addAttribute(COURSE, courseService.getAllCourse());
@@ -49,20 +55,25 @@ public class CourseController {
         return "add-course";
     }
 
+    @GetMapping("/sign-up")
+    public String showRegistrationForm(UserDTO userDTO) {
+        return "sign-up";
+    }
+
     @GetMapping("/home")
     public String showHomepage() {
         return "index";
     }
 
-//    @PostMapping("/adduser")
-//    public String addUser(@Valid User user, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            return "add-user";
-//        }
-//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//        userRepo.save(user);
-//        return REDIRECT;
-//    }
+    @PostMapping("/adduser")
+    public String addUser(@Valid UserDTO userDTO, BindingResult result) {
+        if (result.hasErrors()) {
+            return ("sign-up");
+        }
+        userService.registerNewUserAccount(userDTO);
+        System.out.println("create user " + userDTO.getUsername());
+        return REDIRECT;
+    }
 
     @PostMapping("/addcourse")
     public String addCourse(@Valid Course course, BindingResult result, Model model) {

@@ -1,13 +1,7 @@
 package group2.TASC.core;
 
-import group2.TASC.model.Schedule;
-import org.junit.jupiter.api.BeforeEach;
+import group2.TASC.model.Student;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppointmentTest {
     private static String studentName = "newStudent";

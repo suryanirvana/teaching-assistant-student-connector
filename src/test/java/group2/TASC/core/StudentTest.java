@@ -1,15 +1,11 @@
 package group2.TASC.core;
 
 import group2.TASC.model.Schedule;
-import group2.TASC.model.User;
-import org.junit.jupiter.api.AfterAll;
+import group2.TASC.model.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.event.annotation.AfterTestExecution;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 

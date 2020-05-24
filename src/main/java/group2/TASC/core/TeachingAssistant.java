@@ -2,16 +2,16 @@ package group2.TASC.core;
 
 import group2.TASC.model.Course;
 import group2.TASC.model.Schedule;
+import group2.TASC.model.Student;
 import group2.TASC.model.User;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Getter
 @Setter
-public class TeachingAssistant extends User implements CreateAppointment {
+public class TeachingAssistant {
     private Calendar TACalendar = new Calendar();
 
 
@@ -34,14 +34,14 @@ public class TeachingAssistant extends User implements CreateAppointment {
         this.messages = new ArrayList<>();
     }
 
-    @Override
-    public void createAppointment(String name, LocalDate date, int duration) {
-        Appointment appointment = new Appointment(this.getStudentHashMap().get(name), this);
-        appointment.setDate(date);
-        appointment.setDuration(duration);
-        appointment.setMaximumNumberOfStudent(this.getPreferedNoOfStudents());
-        TACalendar.getScheduleArrayList().add(appointment);
-    }
+//    @Override
+//    public void createAppointment(String name, LocalDate date, int duration) {
+//        Appointment appointment = new Appointment(this.getStudentHashMap().get(name), this);
+//        appointment.setDate(date);
+//        appointment.setDuration(duration);
+//        appointment.setMaximumNumberOfStudent(this.getPreferedNoOfStudents());
+//        TACalendar.getScheduleArrayList().add(appointment);
+//    }
 
     public void addSchedule(Schedule schedule) {
         this.TACalendar.getScheduleArrayList().add(schedule);

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
+<form action="#" th:action="@{/adduser}" th:object="${userDTO}" method="post">
     <label >Student ID</label>
     <input type="text" th:field="*{studentId}" id="studentId" placeholder="Student ID">
     <span th:if="${#fields.hasErrors('studentId')}" th:errors="*{studentId}"></span>
