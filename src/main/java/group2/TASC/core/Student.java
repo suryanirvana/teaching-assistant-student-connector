@@ -1,5 +1,6 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Appointment;
 import group2.TASC.model.Schedule;
 import group2.TASC.model.User;
 import lombok.Getter;
@@ -7,11 +8,10 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Getter
 @Setter
-public class Student extends User implements CreateAppointment {
+public class Student extends User {
     private Calendar studentCalendar = new Calendar();
 
 
@@ -30,14 +30,14 @@ public class Student extends User implements CreateAppointment {
 //        this.getStudentHashMap().put(name, this);
     }
 
-    @Override
-    public void createAppointment(String name, LocalDate date, int duration) {
-        // TODO
-        Appointment appointment = new Appointment(this, this.getTAHashMap().get(name));
-        appointment.setDate(date);
-        appointment.setDuration(duration);
-        studentCalendar.getScheduleArrayList().add(appointment);
-    }
+//    @Override
+//    public void createAppointment(String name, LocalDate date, int duration) {
+//        // TODO
+//        Appointment appointment = new Appointment(this, this.getTAHashMap().get(name));
+//        appointment.setDate(date);
+//        appointment.setDuration(duration);
+//        studentCalendar.getScheduleArrayList().add(appointment);
+//    }
 
     public void setReminder(Reminder reminder) {
         // TODO

@@ -1,5 +1,6 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Appointment;
 import org.junit.jupiter.api.Test;
 
 public class AppointmentTest {

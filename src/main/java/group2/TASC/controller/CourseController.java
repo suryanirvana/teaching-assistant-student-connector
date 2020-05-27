@@ -1,12 +1,8 @@
 package group2.TASC.controller;
 
 import group2.TASC.model.Course;
-import group2.TASC.model.User;
-import group2.TASC.model.UserDTO;
 import group2.TASC.repository.CourseRepo;
-import group2.TASC.repository.UserRepo;
 import group2.TASC.service.CourseService;
-import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +22,6 @@ public class CourseController {
 
     @Autowired
     CourseService courseService;
-
-    @Autowired
-    UserService userService;
 
 //    protected BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -59,16 +52,16 @@ public class CourseController {
 //    public String showHomepage() {
 //        return "index";
 //    }
-
-    @PostMapping("/adduser")
-    public String addUser(@Valid UserDTO userDTO, BindingResult result) {
-        if (result.hasErrors()) {
-            return ("sign-up");
-        }
-        userService.registerNewUserAccount(userDTO);
-        System.out.println("create user " + userDTO.getUsername());
-        return REDIRECT;
-    }
+//
+//    @PostMapping("/adduser")
+//    public String addUser(@Valid UserDTO userDTO, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return ("sign-up");
+//        }
+//        userService.registerNewUserAccount(userDTO);
+//        System.out.println("create user " + userDTO.getUsername());
+//        return REDIRECT;
+//    }
 
     @PostMapping("/addcourse")
     public String addCourse(@Valid Course course, BindingResult result, Model model) {

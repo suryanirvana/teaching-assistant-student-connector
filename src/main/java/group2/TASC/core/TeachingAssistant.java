@@ -1,14 +1,17 @@
 package group2.TASC.core;
 
+import group2.TASC.model.Appointment;
 import group2.TASC.model.Course;
 import group2.TASC.model.Schedule;
+import group2.TASC.model.User;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Getter
 @Setter
-public class TeachingAssistant {
+public class TeachingAssistant extends User {
     private Calendar TACalendar = new Calendar();
 
 
