@@ -43,11 +43,11 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//    runtimeOnly('com.h2database:h2')
+    runtimeOnly('com.h2database:h2')
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
     compile 'io.micrometer:micrometer-registry-prometheus'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
-    runtimeOnly 'org.postgresql:postgresql'
+//    runtimeOnly 'org.postgresql:postgresql'
 }
 
 test {
