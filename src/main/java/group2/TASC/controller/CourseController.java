@@ -49,10 +49,10 @@ public class CourseController {
         return "add-course";
     }
 
-    @GetMapping("/home")
-    public String showHomepage() {
-        return "index";
-    }
+//    @GetMapping("/home")
+//    public String showHomepage() {
+//        return "index";
+//    }
 
 //    @PostMapping("/adduser")
 //    public String addUser(@Valid User user, BindingResult result, Model model) {

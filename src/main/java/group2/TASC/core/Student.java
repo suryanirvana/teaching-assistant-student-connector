@@ -27,7 +27,7 @@ public class Student extends User implements CreateAppointment {
         this.password = passWord;
         this.role = "Student";
         this.studentReminder = new ArrayList<>();
-        this.getStudentHashMap().put(name, this);
+//        this.getStudentHashMap().put(name, this);
     }
 
     @Override
