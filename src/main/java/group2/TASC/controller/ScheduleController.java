@@ -27,7 +27,7 @@ public class ScheduleController {
     @Autowired
     MailerService mailerService;
 
-    private static final String INDEX = "index";
+//    private static final String INDEX = "index";
     private static final String REDIRECT = "redirect:/";
     private static final String SCHEDULE = "SCHEDULE";
 

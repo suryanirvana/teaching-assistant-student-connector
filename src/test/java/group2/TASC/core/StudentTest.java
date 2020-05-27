@@ -1,7 +1,6 @@
 package group2.TASC.core;
 
 import group2.TASC.model.Schedule;
-import group2.TASC.model.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

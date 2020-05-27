@@ -1,6 +1,5 @@
 package group2.TASC.service;
 
-import group2.TASC.model.Student;
 import group2.TASC.model.User;
 import group2.TASC.model.UserDTO;
 import group2.TASC.repository.UserRepo;

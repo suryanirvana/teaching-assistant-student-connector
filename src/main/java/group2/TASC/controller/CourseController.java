@@ -55,15 +55,10 @@ public class CourseController {
         return "add-course";
     }
 
-    @GetMapping("/sign-up")
-    public String showRegistrationForm(UserDTO userDTO) {
-        return "sign-up";
-    }
-
-    @GetMapping("/home")
-    public String showHomepage() {
-        return "index";
-    }
+//    @GetMapping("/home")
+//    public String showHomepage() {
+//        return "index";
+//    }
 
     @PostMapping("/adduser")
     public String addUser(@Valid UserDTO userDTO, BindingResult result) {

@@ -2,11 +2,8 @@ package group2.TASC.core;
 
 import group2.TASC.model.Course;
 import group2.TASC.model.Schedule;
-import group2.TASC.model.Student;
-import group2.TASC.model.User;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Getter

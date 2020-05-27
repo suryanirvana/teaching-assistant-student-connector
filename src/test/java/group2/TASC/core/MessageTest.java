@@ -1,6 +1,5 @@
 package group2.TASC.core;
 
-import group2.TASC.model.Student;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

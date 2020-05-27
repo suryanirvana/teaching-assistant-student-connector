@@ -1,7 +1,6 @@
 package group2.TASC.core;
 
 import group2.TASC.model.Schedule;
-import group2.TASC.model.Student;
 import lombok.Getter;
 import lombok.Setter;
 
