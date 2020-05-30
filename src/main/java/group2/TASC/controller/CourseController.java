@@ -3,6 +3,7 @@ package group2.TASC.controller;
 import group2.TASC.model.Course;
 import group2.TASC.repository.CourseRepo;
 import group2.TASC.service.CourseService;
+import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
+    @Autowired
+    UserService userService;
+
 //    protected BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final String BASE = "base";
@@ -33,6 +37,7 @@ public class CourseController {
 
     @GetMapping("/")
     public String homepage(Model model) {
+        model.addAttribute("username", userService.findAllUsers().get(1).getUsername());
         return BASE;
     }
 

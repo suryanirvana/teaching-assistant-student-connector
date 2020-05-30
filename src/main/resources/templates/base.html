@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,13 +14,14 @@
 </head>
 <body>
     <h1 class="text-center" id="welcome-text" style="margin-top: 10vw;">Welcome!</h1>
+    <h5 th:if="${username}" th:text="${username}"></h5>
 
     <div class="row text-center align-middle">
         <div class="col">
-            <!-- <a href="/signup" style="text-align: center; margin-left: 10px;">
+            <a href="/signup" style="text-align: center; margin-left: 10px;">
                 <button type="button" class="btn btn-dark" style="text-align: center;">
                     <h3 style="text-align: center;"> Sign Up </h3> </button>
-            </a> -->
+            </a>
             <a href="/seecourse" style="text-align: center; margin-left: 10px;">
                 <button type="button" class="btn btn-dark" style="text-align: center;">
                     <h3 style="text-align: center;"> See Course </h3> </button>

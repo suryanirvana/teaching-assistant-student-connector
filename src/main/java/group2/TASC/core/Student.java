@@ -18,14 +18,14 @@ public class Student extends User {
     private String name;
     private String username;
     private String password;
-    private String role;
+//    private String role;
     private ArrayList<Reminder> studentReminder;
 
     public Student(String name, String userName, String passWord) {
         this.name = name;
         this.username = userName;
         this.password = passWord;
-        this.role = "Student";
+//        this.role = "Student";
         this.studentReminder = new ArrayList<>();
 //        this.getStudentHashMap().put(name, this);
     }

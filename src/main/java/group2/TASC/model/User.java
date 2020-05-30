@@ -12,12 +12,27 @@ import java.util.Map;
 
 @Getter
 @Setter
-public abstract class User {
-    private long studentId;
+@Table(name="users")
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "student_id")
+    private String student_id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
-    private String role = "User";
-    Map<String, Student> studentHashMap = new HashMap<>();
-    Map<String, TeachingAssistant> TAHashMap = new HashMap<>();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="role")
+    private Role role;
 }

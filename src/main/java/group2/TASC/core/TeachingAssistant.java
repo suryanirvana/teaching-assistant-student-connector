@@ -18,7 +18,7 @@ public class TeachingAssistant extends User {
     private String name;
     private String userName;
     private String passWord;
-    private String role;
+//    private String role;
     private ArrayList<Reminder> TAReminder;
     private ArrayList<Course> TACourse;
     private ArrayList<Message> messages;
@@ -28,7 +28,7 @@ public class TeachingAssistant extends User {
         this.name = name;
         this.userName = userName;
         this.passWord = passWord;
-        this.role = "Teaching Assistant";
+//        this.role = "Teaching Assistant";
         this.TAReminder = new ArrayList<>();
         this.TACourse = new ArrayList<>();
         this.messages = new ArrayList<>();
