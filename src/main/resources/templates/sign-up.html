@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Advanced Programming Midterm Exam</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Spartan:400,600,700&display=swap" rel="stylesheet">
-
+    <title>Sign Up</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,23 +10,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<form action="#" th:action="@{/register}" th:object="${USER}" method="post">
-    <label for="student_id">Student ID</label>
-    <input type="text" th:field="*{student_id}" id="student_id" placeholder="Student ID">
-    <span th:if="${#fields.hasErrors('student_id')}" th:errors="*{student_id}"></span>
-    <br>
-    <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Name">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-    <br>
-    <label for="username">Username</label>
-    <input type="text" th:field="*{username}" id="username" placeholder="Username">
-    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
-    <br>
-    <label for="password">Password</label>
-    <input type="password" th:field="*{password}" id="password" placeholder="Password">
-    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
-    <div class="submit"><input type="submit" value="Sign Up" id="submit"></div>
+<form action="/register" method="POST">
+    <p for="name">Name:
+        <input type="text" name="name" id="name">
+    </p>
+    <p for="student_id">Student ID:
+        <input type="text" name="student_id" id="student_id">
+    </p>
+    <p for="username">Username:
+        <input type="text" name="username" id="username">
+    </p>
+    <p for="password">Password:
+        <input type="password" name="password" id="password">
+    </p>
+    <input type="submit" value="Sign Up" id="signup">
 </form>
 <a href="/" style="text-align: center; margin-left: 10px;">
     <button type="button" class="btn btn-dark" style="text-align: center;">

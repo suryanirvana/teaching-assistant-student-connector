@@ -32,7 +32,7 @@ public class UserController
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody User user, BindingResult result, Model model) {
+    public String register(@Valid User user, BindingResult result, Model model) {
 //        if (userService.findByUsername(user.getUsername()) != null)
 //        {
 //            return new ResponseEntity<>(HttpStatus.CONFLICT);
