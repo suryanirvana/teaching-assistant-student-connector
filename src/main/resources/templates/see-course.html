@@ -73,7 +73,7 @@
                 <td th:text="${course.courseName}"></td>
                 <td>
                     <p th:text="${course.taName}"></p>
-                    <div class="dropdown">
+                    <div class="dropdown" sec:authorize="hasAuthority('ADMIN')">
                         <a class="btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #588da8; color: white;">
                             Assign TA
                         </a>
@@ -83,11 +83,6 @@
                             </form>
                         </div>
                     </div>
-<!--                        <label>-->
-<!--                                <select>-->
-<!--&lt;!&ndash;                                    <option th:each="ta:${TA}" th:text="${ta.student_id}"></option>&ndash;&gt;-->
-<!--                                </select>-->
-<!--                        </label>-->
                 </td>
                 <td  sec:authorize="hasAuthority('ADMIN')">
                     <form form-method="get" th:action="@{/edit/{courseCode}(courseCode=${course.courseCode})}">

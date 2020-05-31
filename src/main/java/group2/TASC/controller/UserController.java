@@ -6,6 +6,7 @@ import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
@@ -47,8 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginForm()
-    {
+    public String loginForm(Authentication authentication, Model model) {
         return "login";
     }
 

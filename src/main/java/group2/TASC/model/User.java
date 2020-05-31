@@ -46,6 +46,9 @@ public class User {
     @Column(name="course_code")
     private String courseCode = "";
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Schedule> schedules;
+
     public List<String> getRoleList() {
         if(this.roles.length() > 0) {
             return Arrays.asList(this.roles.split(","));
