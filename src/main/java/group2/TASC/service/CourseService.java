@@ -9,9 +9,11 @@ public interface CourseService {
 
     void addCourse(Course course);
 
-    void removeCourseById(long id);
+    void removeCourseById(String id);
 
-    Course getCourseById(long id);
+    Course getCourseById(String id);
 
     void updateCourse(Course course);
+
+    void assignTA(String id, String taId);
 }

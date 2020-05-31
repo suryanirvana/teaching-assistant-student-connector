@@ -1,7 +1,7 @@
 package group2.TASC.controller;
 
-import group2.TASC.model.Role;
 import group2.TASC.model.User;
+import group2.TASC.repository.UserRepo;
 import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +19,13 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
-public class UserController
-{
+public class UserController {
+
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepo userRepo;
 
     private static final String REDIRECT = "redirect:/";
 
@@ -32,32 +35,21 @@ public class UserController
     }
 
     @PostMapping("/register")
-    public String register(@Valid User user, BindingResult result, Model model) {
-//        if (userService.findByUsername(user.getUsername()) != null)
-//        {
-//            return new ResponseEntity<>(HttpStatus.CONFLICT);
-//        }
-//        if (result.hasErrors()) {
-//            return "sign-up";
-//        }
-        userService.saveUser(user);
-        model.addAttribute("USER", user);
+    public String register(@Valid User user, Model model) throws Exception{
+        try {
+            userService.saveUser(user);
+        } catch (Exception e) {
+            model.addAttribute("ERROR_MESSAGE", "Username already exist");
+        }
+        user.setRoles(user.getRoles()+",TA");
+        userRepo.save(user);
         return REDIRECT;
     }
 
     @GetMapping("/login")
-    public String loginAndLogout()
+    public String loginForm()
     {
         return "login";
-    }
-
-    @PostMapping("/authenticateTheUser")
-    public String successLogin(@Valid User user, Model model) throws Exception {
-        if(userService.findByUsername(user.getUsername()) == null) {
-            throw new Exception("Username not found");
-        }
-        model.addAttribute("username", user.getUsername());
-        return REDIRECT;
     }
 
     @GetMapping("/login-error")
@@ -73,13 +65,5 @@ public class UserController
         }
         model.addAttribute("errorMessage", errorMessage);
         return "login";
-    }
-
-
-    @PostMapping("/change/{role}")
-    public ResponseEntity<?> changeRole(Principal principal, @PathVariable Role role)
-    {
-        User user = userService.changeRole(role, principal.getName());
-        return ResponseEntity.ok(user);
     }
 }

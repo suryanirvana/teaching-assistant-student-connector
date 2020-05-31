@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" type="text/CSS">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -20,7 +19,8 @@
             <tr>
                 <th scope="col">Course Code</th>
                 <th scope="col">Course Name</th>
-                <th scope="col"></th>
+                <th scope="col">Teaching Assistant(s)</th>
+                <th scope="col" sec:authorize="hasAuthority('ADMIN')"></th>
             </tr>
             </thead>
             <tbody>
@@ -28,11 +28,30 @@
                 <td th:text="${course.courseCode}"></td>
                 <td th:text="${course.courseName}"></td>
                 <td>
-                    <a th:href="@{/edit/{courseCode}(courseCode=${course.courseCode})}"><button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;">
-                        Edit </button></a>
-                    <a th:href="@{/delete/{courseCode}(courseCode=${course.courseCode})}">
-                    <button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;">
-                        Delete </button></a>
+                    <p th:text="${course.taName}"></p>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Assign TA
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <form form-method="get" th:each="ta:${TA}" th:action="@{'/assignTA/'+${course.courseCode}+'/'+${ta.student_id}}">
+                                <button type="submit" class="dropdown-item" style="text-align: center; font-size: 15px;" th:text="${ta.student_id}"></button>
+                            </form>
+                        </div>
+                    </div>
+<!--                        <label>-->
+<!--                                <select>-->
+<!--&lt;!&ndash;                                    <option th:each="ta:${TA}" th:text="${ta.student_id}"></option>&ndash;&gt;-->
+<!--                                </select>-->
+<!--                        </label>-->
+                </td>
+                <td  sec:authorize="hasAuthority('ADMIN')">
+                    <form form-method="get" th:action="@{/edit/{courseCode}(courseCode=${course.courseCode})}">
+                        <button type="submit" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Edit </button>
+                    </form>
+                    <form form-method="get" th:action="@{/delete/{courseCode}(courseCode=${course.courseCode})}" sec:authorize="hasAuthority('ADMIN')">
+                        <button type="submit" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;"> Delete </button>
+                    </form>
                 </td>
             </tr>
             </tbody>
@@ -43,10 +62,9 @@
         <!-- <div class="col"></div> -->
         <div class="col text-center">
             <br><br>
-            <a href="/add/course" style="text-align: center; margin-left: 10px;">
-                <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <h3 style="text-align: center;"> Add Course </h3> </button>
-            </a>
+            <form form-method="get" th:action="@{/add/course}" sec:authorize="hasAuthority('ADMIN')">
+                <button class="btn btn-dark" type="submit" style="text-align: center;"> Add Course </button>
+            </form>
             <a href="/" style="text-align: center; margin-left: 10px;">
                 <button type="button" class="btn btn-dark" style="text-align: center;">
                     <h3 style="text-align: center;"> Homepage </h3> </button>

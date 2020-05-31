@@ -1,6 +1,0 @@
-package group2.TASC.model;
-
-public enum Role {
-    ROLE_USER,
-    ROLE_ADMIN
-}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,35 +9,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     
     <title>Homepage</title>
-
-    <link rel="stylesheet" href="style.css" type="text/CSS">
 </head>
 <body>
     <h1 class="text-center" id="welcome-text" style="margin-top: 10vw;">Welcome!</h1>
-    <h5 th:if="${username}" th:text="${username}"></h5>
 
-    <div class="row text-center align-middle">
-        <div class="col">
-            <a href="/signup" style="text-align: center; margin-left: 10px;">
-                <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <h3 style="text-align: center;"> Sign Up </h3> </button>
-            </a>
-            <a href="/seecourse" style="text-align: center; margin-left: 10px;">
-                <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <h3 style="text-align: center;"> See Course </h3> </button>
-            </a>
-            <a href="/seeschedule" style="text-align: center; margin-left: 10px;">
-                <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <h3 style="text-align: center;"> See Schedule </h3> </button>
-            </a>
-            <a href="/seeappointment" style="text-align: center; margin-left: 10px;">
-                <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <h3 style="text-align: center;"> See Appointment </h3> </button>
-            </a>
-            <a href="/logout" style="text-align: center; margin-left: 10px;">
-                <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <h3 style="text-align: center;"> Log Out </h3> </button>
-            </a>
+    <div class="row-lg-12 mb-5">
+        <div class="col-6 input mx-auto ml-0 px-0 text-center">
+            <form form-method="get" th:action="@{/signup}" sec:authorize="isAnonymous()">
+                <button class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Sign Up</button>
+            </form>
+            <form form-method="get" th:action="@{/seecourse}" sec:authorize="isAuthenticated()">
+                <button class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Course</button>
+            </form>
+<!--            <a href="/seecourse" style="text-align: center; margin-left: 10px;">-->
+<!--                <button type="button" class="btn btn-dark" style="text-align: center;">-->
+<!--                    <h3 style="text-align: center;"> See Course </h3> </button>-->
+<!--            </a>-->
+<!--            <a href="/seeschedule" style="text-align: center; margin-left: 10px;">-->
+<!--                <button type="button" class="btn btn-dark" style="text-align: center;">-->
+<!--                    <h3 style="text-align: center;"> See Schedule </h3> </button>-->
+<!--            </a>-->
+<!--            <a href="/seeappointment" style="text-align: center; margin-left: 10px;">-->
+<!--                <button type="button" class="btn btn-dark" style="text-align: center;">-->
+<!--                    <h3 style="text-align: center;"> See Appointment </h3> </button>-->
+<!--            </a>-->
+            <form form-method="post" th:action="@{/logout}">
+                <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Log Out</button>
+                <button sec:authorize="isAnonymous()" th:href="@{~/login}" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Log In</button>
+            </form>
         </div>
     </div>
     <!-- Optional JavaScript -->

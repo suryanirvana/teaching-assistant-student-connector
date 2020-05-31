@@ -15,8 +15,5 @@ public class TascApplication {
 		return new BCryptPasswordEncoder();
 	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(TascApplication.class, args);
-	}
-
+	public static void main(String[] args) { SpringApplication.run(TascApplication.class, args); }
 }
