@@ -30,11 +30,6 @@ Build:
   only:
     - master
 
-Test:
-  stage: test
-  script:
-    - gradle check
-
 Deployment:
   image: ruby:2.6
   stage: deploy
@@ -47,27 +42,3 @@ Deployment:
     url: $HEROKU_APP_HOST
   only:
     - master
-
-Sonarqube:
-  stage: test
-  script: gradle sonarqube -Dsonar.projectKey=advprog2020-i-group2assignment -Dsonar.host.url=https://pmpl.cs.ui.ac.id/sonarqube -Dsonar.login=7b58b4b00b275046d37b5d3c441196a149de07e4
-  allow_failure: true
-  only:
-    - merge_requests
-    - master
-
-unitTests:
-  stage: test
-  script:
-    - ./gradlew test
-    - ./gradlew jacocoTestReport
-    - cat build/jacocoHtml/index.html
-  coverage: '/Total.*?([0-9]{1,3})%/'
-  services:
-    - postgres:12.2-alpine
-  variables:
-    POSTGRES_DB: nice_marmot
-    POSTGRES_USER: runner
-    POSTGRES_PASSWORD: ""
-    POSTGRES_HOST_AUTH_METHOD: trust
-
