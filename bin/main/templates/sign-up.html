@@ -1,127 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-           <!-- Required meta tags -->
-           <meta charset="utf-8">
-           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins&display=swap" rel="stylesheet">
-           <!-- Bootstrap CSS -->
-           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-           
-           <title>Homepage</title>
-           <style>
-           h1#title {
-           text-align: left;
-           font-size: 40px;
-           font-family: Poppins;
-           color: black;
-       }
-       button.btn {
-           border-radius: 30px;
-           border-color: white;
-           border-width: 5px;
-           font-family: Montserrat;
-           color: white;
-       }
-       .box {
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <title>Homepage</title>
+    <style>
+        h1#title {
+            text-align: left;
+            font-size: 40px;
+            font-family: Poppins;
+            color: black;
+        }
+        button.btn {
+            border-radius: 30px;
+            border-color: white;
+            border-width: 5px;
+            font-family: Montserrat;
+            color: white;
+        }
+        .box {
             background-color: #ffe9c5;
             max-width: 100%;
             max-height: 100%;
-            padding-top: 10px;
-            padding-left: 25px;
-            padding-right: 10px;
-            padding-bottom: 10px;
-            margin-left: auto;
             margin-right: auto;
             margin-top: 20px;
             margin-bottom: auto;
+            width: 100%;
             color: black;
             vertical-align: middle;
             font-size: 18px;
             overflow: auto;
             border-radius: 20px;
         }
-       button.btn:hover {
-           border-radius: 30px;
-           border-color: white;
-           border-width: 5px;
-           font-family: Montserrat;
-           color: white;
-           box-shadow: 1px 1px 20px gray;
-       }
-       p {
-        font-family: Poppins;
-        text-align: left;
-        font-size: 20px;
-    }
-    input.btn {
-        width: 200px;
-        border-radius: 30px;
-        border-color: white;
-        border-width: 5px;
-        background-color: white;
-        font-family: Montserrat;
-        color: black;
-    }
-    input.btn:hover {
-        width: 200px;
-        border-radius: 30px;
-        border-color: white;
-        border-width: 5px;
-        background-color: white;
-        font-family: Montserrat;
-        color: black;
-        box-shadow: 1px 1px 20px gray;
-    }
-    input.takeinput {
-        width: 400px;
-        border-radius: 20px;
-        width: 200px;
-        outline:0px;
-        -webkit-appearance:none;
-        padding-left: 10px;
-    }
-    input.takeinput:hover {
-        outline:0px;
-        -webkit-appearance:none;
-    }
-    h3 {
-        font-size: 20px;
-    }</style>
+        button.btn:hover {
+            border-radius: 30px;
+            border-color: white;
+            border-width: 5px;
+            font-family: Montserrat;
+            color: white;
+            box-shadow: 1px 1px 20px gray;
+        }
+        p {
+            font-family: Poppins;
+            text-align: left;
+            font-size: 20px;
+            margin-bottom: 0;
+        }
+        input.btn {
+            width: 200px;
+            border-radius: 30px;
+            border-color: white;
+            border-width: 2px;
+            background-color: whitesmoke;
+            color: black;
+            border-color: black;
+        }
+        input.btn:hover {
+            width: 200px;
+            border-radius: 30px;
+            border-color: white;
+            color: whitesmoke;
+            font-weight: bold;
+            background-color: grey;
+            font-family: Montserrat;
+            color: white;
+            box-shadow: 1px 1px 20px gray;
+        }
+        input.takeinput {
+            padding: 1px 10px;
+            margin-bottom: 1vw;
+            width: 100%;
+
+            background-color: whitesmoke;
+
+            border-radius: 30px;
+            border-color: black;
+        }
+
+        input.takeinput:hover {
+            outline:0px;
+            -webkit-appearance:none;
+        }
+        h3 {
+            font-size: 20px;
+            margin: 0;
+        }
+        .form {
+            background-color: whitesmoke;
+            padding: 2vw 4vw;
+        }
+    </style>
 </head>
-<body style="background-image: linear-gradient(-90deg, #aacfcf, #8ccbbe, #679b9b)" style="text-align: center;">
+<body style="background-image: linear-gradient(-90deg, #aacfcf, #8ccbbe, #679b9b);">
     <div class="container">
-        <div class="row" style="text-align: center;">
-            <br><br>
-                <div class="box">
-                    <br>
-                    <h1 id="title" style="text-align: center;">Sign Up</h1><br>
-                    <form  action="/register" method="POST">
-                        <div class="form-group">
-                        <p for="name">Name:
-                            <input class="takeinput" type="text" name="name" id="name">
-                        </p>
-                        <p for="student_id">Student ID:
-                            <input class="takeinput" type="text" name="student_id" id="student_id">
-                        </p>
-                        <p for="email">Email:
-                            <input class="takeinput" type="text" name="email" id="email">
-                        </p>
-                        <p for="username">Username:
-                            <input class="takeinput" type="text" name="username" id="username">
-                        </p>
-                        <p for="password">Password:
-                            <input class="takeinput" type="password" name="password" id="password">
-                        </p>
-                        <input class="btn" type="submit" value="Sign Up" id="signup">
-                    </form>
+        <div class="row-lg-12 mb-5" style="text-align: center;">
+            <div class="col-6 input mx-auto ml-0 px-0">
+                <div class="box text-center">
+                    <div class="text-center" style="padding: 25px;">
+                        <h1 id="title" style="text-align: center;">Sign Up</h1>
                     </div>
-                    <br>
-                    <a href="/" style="text-align: center; font-size: 10px;">
-                        <button type="button" class="btn" style="text-align: center; border-color: white; color: black; font-size: 10px; background-color: white;">
-                            <h3 style="text-align: center;" style="color: black; font-size: 10px;"> Homepage </h3> </button>
-                    </a>
-                    <br><br>
+                    <div class="form">
+                        <form  action="/register" method="POST">
+                            <div class="form-group">
+                            <p for="name">Name: </p>
+                            <input class="takeinput" type="text" name="name" id="name">
+                            <p for="student_id">Student ID: </p>
+                            <input class="takeinput" type="text" name="student_id" id="student_id">
+                            <p for="email">Email: </p>
+                            <input class="takeinput" type="text" name="email" id="email">
+                            <p for="username">Username: </p>
+                            <input class="takeinput" type="text" name="username" id="username">
+                            <p for="password">Password: </p>
+                            <input class="takeinput" type="password" name="password" id="password" style="margin-bottom: 25px;">
+                            <div class="text-center">
+                                <input class="btn" type="submit" value="Sign Up" id="signup">
+                            </div>
+                        </form>
+                        </div>
+                        <div class="text-center">
+                        <a href="/" style="text-align: center; font-size: 10px;">
+                            <button type="button" class="btn" style="text-align: center; border-color: white; color: black; font-size: 10px; background-color: whitesmoke;">
+                                <h3 style="text-align: center; color: black; font-size: 10px; margin:0;"> Homepage </h3> </button>
+                        </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

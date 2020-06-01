@@ -73,23 +73,18 @@
                 <td th:text="${course.courseName}"></td>
                 <td>
                     <p th:text="${course.taName}"></p>
-                    <div class="dropdown">
+                    <div class="dropdown" sec:authorize="hasAuthority('ADMIN')">
                         <a class="btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #588da8; color: white;">
                             Assign TA
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <form form-method="get" th:each="ta:${TA}" th:action="@{'/assignTA/'+${course.courseCode}+'/'+${ta.student_id}}">
-                                <button type="submit" class="dropdown-item" style="text-align: center; font-size: 15px; color: black;" th:text="${ta.student_id}">Test</button>
+                                <button type="submit" class="dropdown-item" style="text-align: center; font-size: 15px; color: black;" th:text="${ta.name}">Test</button>
                             </form>
                         </div>
                     </div>
-<!--                        <label>-->
-<!--                                <select>-->
-<!--&lt;!&ndash;                                    <option th:each="ta:${TA}" th:text="${ta.student_id}"></option>&ndash;&gt;-->
-<!--                                </select>-->
-<!--                        </label>-->
                 </td>
-                <td  sec:authorize="hasAuthority('ADMIN')">
+                <td sec:authorize="hasAuthority('ADMIN')">
                     <form form-method="get" th:action="@{/edit/{courseCode}(courseCode=${course.courseCode})}">
                         <button type="submit" class="btn" style="text-align: center; font-size: 15px; color: black; border-color: black; border-width: 2px;"> Edit </button>
                     </form>
