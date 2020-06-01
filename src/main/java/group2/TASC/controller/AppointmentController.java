@@ -3,6 +3,7 @@ package group2.TASC.controller;
 import group2.TASC.model.Appointment;
 import group2.TASC.model.Schedule;
 import group2.TASC.model.User;
+import group2.TASC.repository.UserRepo;
 import group2.TASC.service.AppointmentService;
 import group2.TASC.service.MailerService;
 import group2.TASC.service.UserService;
@@ -25,6 +26,9 @@ public class AppointmentController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserRepo userRepo;
 
     @Autowired
     AppointmentService appointmentService;
@@ -62,12 +66,10 @@ public class AppointmentController {
 
     @PostMapping("/addappointment/{USERNAME}/{TA}")
     public String addSchedule(@PathVariable("USERNAME") String username, @PathVariable("TA") String ta, @Valid Appointment appointment, BindingResult result, Model model) {
-        appointment.setStudent(username);
-        appointment.setTa(ta);
         if (result.hasErrors()) {
             return result.toString();
         }
-        mailerService.sendEmail("emailnya TA",  "You have a new appointment request",
+        mailerService.sendEmail(userRepo.findByName(ta).getEmail(),  "You have a new appointment request",
                 "Hello TA, student has a new appointment request for course on date at. Please give your confirmation on the application.");
 
         appointmentService.addAppointment(appointment);
@@ -81,7 +83,7 @@ public class AppointmentController {
         appointmentService.acceptAppointment(appointment);
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
 
-        mailerService.sendEmail("emailnya student", "Your appointment request is accepted",
+        mailerService.sendEmail(userService.findByUsername(username).getEmail(), "Your appointment request is accepted",
                 "Hello student your appointment with TA for course is confirmed and scheduled on date at time. Contact your TA for further information");
         return "redirect:/seeappointment/" + username;
     }
@@ -91,7 +93,7 @@ public class AppointmentController {
         Appointment appointment = appointmentService.getAppointmentById(id);
         appointmentService.rejectAppointment(appointment);
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
-        mailerService.sendEmail("emailnya student", "Your appointment request is rejected",
+        mailerService.sendEmail(userService.findByUsername(username).getEmail(), "Your appointment request is rejected",
                 "Hello student your appointment with TA for course is rejected and scheduled on date at time. Please request a new appointment.");
         return "redirect:/seeappointment/" + username;
     }

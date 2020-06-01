@@ -1,119 +1,170 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-           <!-- Required meta tags -->
-           <meta charset="utf-8">
-           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins&display=swap" rel="stylesheet">
-           <!-- Bootstrap CSS -->
-           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-           
-           <title>Homepage</title>
-           <style>
-           h1#title {
-           text-align: center;
-           font-size: 60px;
-           font-family: Poppins;
-           color: bisque;
-           text-shadow: 2px 2px #588da8
-       }
-       button.btn {
-           border-radius: 30px;
-           border-color: white;
-           border-width: 5px;
-           font-family: Montserrat;
-           color: white;
-       }
-       .box {
-            background-color: #ffe9c5;
-            max-width: 100%;
-            max-height: 100%;
-            padding-top: 10px;
-            padding-left: 25px;
-            padding-right: 10px;
-            padding-bottom: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-            margin-bottom: auto;
-            color: black;
-            vertical-align: middle;
-            font-size: 18px;
-            overflow: auto;
-            border-radius: 20px;
-            text-align: center;
+       <!-- Required meta tags -->
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins&display=swap" rel="stylesheet">
+       <!-- Bootstrap CSS -->
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+       <title>See Appointment</title>
+       <style>
+           html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
-       button.btn:hover {
-           border-radius: 30px;
-           border-color: white;
-           border-width: 5px;
-           font-family: Montserrat;
-           color: white;
-           box-shadow: 1px 1px 20px gray;
-       }</style>
-    </head>
+           h1#title {
+               text-align: center;
+               font-size: 60px;
+               font-family: Poppins;
+               color: bisque;
+               text-shadow: 2px 2px #588da8
+           }
+           button.btn {
+               border-radius: 30px;
+               border-color: white;
+               border-width: 5px;
+               font-family: Montserrat;
+               color: white;
+           }
+           .box {
+                background-color: #ffe9c5;
+                max-width: 100%;
+                max-height: 100%;
+                padding-top: 10px;
+                padding-left: 25px;
+                padding-right: 10px;
+                padding-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                margin-bottom: auto;
+                color: black;
+                vertical-align: middle;
+                font-size: 18px;
+                overflow: auto;
+                border-radius: 20px;
+                text-align: center;
+            }
+           button.btn:hover {
+               border-radius: 30px;
+               border-color: white;
+               border-width: 5px;
+               font-family: Montserrat;
+               color: white;
+               box-shadow: 1px 1px 20px gray;
+           }
+       </style>
+</head>
 <body style="background-image: linear-gradient(-90deg, #aacfcf, #8ccbbe, #679b9b)">
-    <div class="container">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
-                <br><br>
+    <!-- <div class="container" style="margin:50px;"> -->
+        <div class="row" style="margin-top:5vw;">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
                 <h1 id="title">See Appointment</h1>
-<div th:each="ta:${TA}">
-    <br>
-    <form form-method="get" th:action="@{'/add/appointment/'+${USERNAME}+'/'+${ta.name}}" style="text-align: center;">
-        <h3 th:text="${ta.name}"></h3>
-        <button type="submit" class="btn">
-            Request an Appointment</button>
-    </form>
-</div>
-<br>
-<div style="text-align: center;">
-<a href="/" style="text-align: center; margin-left: 10px;">
-    <button type="button" class="btn" style="text-align: center;">
-         Homepage  </button>
-</a>
-</div>
-<br>
-<!-- <div class="box"> -->
-    <br>
-    <div th:each="appointment:${APPOINTMENT}" style="text-align: center;">
-    <div class="card" style="width: 18rem; font-family: Poppins; border-radius: 20px; border-width: 1px; border-color: #ffe9c5;">
-        <div class="card-body">
-          <h3 class="card-title" th:text="${appointment.appointmentName}">Appointment Name</h3>
-          <h5 class="card-subtitle mb-2 text-muted" th:text="${appointment.status}">Appointment Status</h5>
-          <hr>
-          <div style="text-align: left;">
-          <span>Time: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.time}">Time</span><br>
-          <span>Duration: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.duration}">Duration</span><br>
-          <span>Student: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.student}">Student</span><br>
-          <span>TA: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.ta}">TA</span><br>
-          <span>No of Students: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.numOfStudents}">Student</span><p style="text-align: left; font-size: 15px;" class="card-text" th:if="${appointment.ta} == ${USERNAME}">
-        </div>
-        <br>
-            <div class="row">
-                <div class="col-sm"><form form-method="get" th:action="@{'/accept/'+${appointment.id}+'/'+${USERNAME}}">
-                    <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: green; border-color: green; color: white;">Accept</button>
-                </form></div>
-                <div class="col-sm"><form form-method="get" th:action="@{'/reject/'+${appointment.id}+'/'+${USERNAME}}">
-                    <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: red; color: white;">Reject</button>
-                </form></div>
+                <div style="text-align: center;">
+                    <a href="/" style="text-align: center; margin-left: 10px;">
+                        <button type="button" class="btn" style="text-align: center;">Homepage</button>
+                    </a>
+                </div>
             </div>
-        </p>
+            <div class="col-md-1"></div>
         </div>
-      </div>
-    </div>
-    <br>
-<!-- </div> -->
-</div>
-<div class="col-1"></div>
-</div>
-<br><br>
-
-</div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <div class="row">
+            <div class="col-md-6">
+                <br><br>
+                <div class="row">
+                    <div class="row text-center">
+                        <div class="col-md-12 text-center" style="margin-left: 75px;margin-right: 75px;">
+                            <h1 class="text-center">Teaching Assistants List</h1>
+                        </div>
+                    </div>
+                    <div th:each="ta:${TA}" class="col-md-4 text-center">
+                        <h3 th:text="${ta.name}" style="margin: 10px;">hello</h3>
+                        <div class="col-md-8 text-center" style="padding-top:4px;padding-bottom: 4px;">
+                            <form form-method="get" th:action="@{'/add/appointment/'+${USERNAME}+'/'+${ta.name}}" style="text-align: center;">
+                                <button type="submit" class="btn">
+                                    Request an Appointment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-md-6" style="padding:0;">
+                <br><br>
+                <div class="row">
+                    <div class="col-md-5" th:each="appointment:${APPOINTMENT}" style="text-align: center;">
+                        <div class="card" style="width: 18rem; font-family: Poppins; border-radius: 20px; border-width: 1px; border-color: #ffe9c5;">
+                            <div class="card-body">
+                                <h3 class="card-title" th:text="${appointment.appointmentName}">Appointment Name</h3>
+                                <h5 class="card-subtitle mb-2 text-muted" th:text="${appointment.status}">Appointment Status</h5>
+                                <hr>
+                                <div style="text-align: left;">
+                                    <span>Time: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.time}">Time</span><br>
+                                    <span>Duration: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.duration}">Duration</span><br>
+                                    <span>Student: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.student}">Student</span><br>
+                                    <span>TA: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.ta}">TA</span><br>
+                                    <span>No of Students: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.numOfStudents}">Student</span><p style="text-align: left; font-size: 15px;" class="card-text" th:if="${appointment.ta} == ${USERNAME}">
+                                </div>
+                                <br>
+                                <div class="row" th:if="${appointment.ta} == ${USERNAME}">
+                                    <div class="col-sm">
+                                        <form form-method="get" th:action="@{'/accept/'+${appointment.id}+'/'+${USERNAME}}">
+                                            <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: green; border-color: green; color: white;">Accept</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm">
+                                        <form form-method="get" th:action="@{'/reject/'+${appointment.id}+'/'+${USERNAME}}">
+                                            <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: red; border-color: red; color: white;">Reject</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5" th:each="appointment:${APPOINTMENT}" style="text-align: center;">
+                        <div class="card" style="width: 18rem; font-family: Poppins; border-radius: 20px; border-width: 1px; border-color: #ffe9c5;">
+                            <div class="card-body">
+                                <h3 class="card-title" th:text="${appointment.appointmentName}">Appointment Name</h3>
+                                <h5 class="card-subtitle mb-2 text-muted" th:text="${appointment.status}">Appointment Status</h5>
+                                <hr>
+                                <div style="text-align: left;">
+                                    <span>Time: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.time}">Time</span><br>
+                                    <span>Duration: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.duration}">Duration</span><br>
+                                    <span>Student: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.student}">Student</span><br>
+                                    <span>TA: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.ta}">TA</span><br>
+                                    <span>No of Students: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.numOfStudents}">Student</span><p style="text-align: left; font-size: 15px;" class="card-text" th:if="${appointment.ta} == ${USERNAME}">
+                                </div>
+                                <br>
+                                <div class="row" th:if="${appointment.ta} == ${USERNAME}">
+                                    <div class="col-sm">
+                                        <form form-method="get" th:action="@{'/accept/'+${appointment.id}+'/'+${USERNAME}}">
+                                            <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: green; border-color: green; color: white;">Accept</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm">
+                                        <form form-method="get" th:action="@{'/reject/'+${appointment.id}+'/'+${USERNAME}}">
+                                            <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: red; border-color: red; color: white;">Reject</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <br>
+            </div>
+        </div>
+        <br><br>
+    <!-- </div> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

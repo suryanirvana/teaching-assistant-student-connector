@@ -10,80 +10,97 @@
     
     <title>Homepage</title>
     <style>
-    h1#title {
-        text-align: left;
-        font-size: 80px;
-        font-family: Poppins;
-        color: bisque;
-        text-shadow: 2px 2px #588da8
-    }
-    button.btn {
-        border-radius: 30px;
-        border-color: white;
-        border-width: 5px;
-        font-family: Montserrat;
-        color: white;
-    }
-    button.btn:hover {
-        border-radius: 30px;
-        border-color: white;
-        border-width: 5px;
-        font-family: Montserrat;
-        color: white;
-        box-shadow: 1px 1px 20px gray;
-    }
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        h1.title {
+            text-align: left;
+            font-size: 80px;
+            font-family: Poppins;
+            color: bisque;
+            text-shadow: 2px 2px #588da8
+        }
+        button.btn {
+            border-radius: 30px;
+            border-color: white;
+            border-width: 5px;
+            font-family: Montserrat;
+            color: white;
+        }
+        button.btn:hover {
+            border-radius: 30px;
+            border-color: white;
+            border-width: 5px;
+            font-family: Montserrat;
+            color: white;
+            box-shadow: 1px 1px 20px gray;
+        }
     </style>
 </head>
-<body style="background-image: linear-gradient(-90deg, #aacfcf, #8ccbbe, #679b9b)">
-    <div class="container">
-    <h1 class="text-center" id="title" style="margin-top: 10vw;">Welcome to Group 2's TASC!</h1>
-        <h2 sec:authorize="isAuthenticated()" th:text="${USERNAME}"></h2>
-        <br><br>
+<body style="background-image: linear-gradient(-90deg, #aacfcf, #8ccbbe, #679b9b); overflow-y: hidden;">
+    <!-- <div class="container"> -->
+    <h1 class="text-center title" style="margin-top: 10vw;">Welcome to Group 2's TASC!</h1>
+    <h1 class="text-center title" sec:authorize="isAuthenticated()" th:text="${USERNAME}" style="font-size: 40px;">Hello, </h1>
+    <br><br>
     <div class="row-lg-12 mb-5">
-        <div class="col-6 input mx-auto ml-0 px-0 text-center">
-            <form form-method="get" th:action="@{/signup}" sec:authorize="isAnonymous()">
-                <button class="btn btn-outline-info my-2 my-sm-0 btn-sm" 
-                style="width:200px; font-size: 20px;" type="submit">Sign Up</button>
-            </form>
-            <br>
-            <form form-method="get" th:action="@{/seecourse}" sec:authorize="isAuthenticated()">
-                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Course</button>
-            </form>
-            <br>
-            <form form-method="get" th:action="@{'/seeschedule/'+${USERNAME}}" sec:authorize="isAuthenticated()">
-                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Schedule</button>
-            </form>
-            <br>
-            <form form-method="get" th:action="@{'/seeappointment/'+${USERNAME}}" sec:authorize="isAuthenticated()">
-                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Appointment</button>
-            </form>
-            <br>
-            <form form-method="get" th:action="@{/register-student}" sec:authorize="hasAuthority('USER')">
-                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Register as Student</button>
-            </form>
-            <h2 sec:authorize="hasAuthority('STUDENT')">You are registered as Student</h2>
-            <form form-method="get" th:action="@{/register-TA}" sec:authorize="hasAuthority('USER')">
-                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Register as TA</button>
-            </form>
-            <h2 sec:authorize="hasAuthority('TA')">You are registered as TA</h2>
-<!--            <a href="/seecourse" style="text-align: center; margin-left: 10px;">-->
-<!--                <button type="button" class="btn btn-dark" style="text-align: center;">-->
-<!--                    <h3 style="text-align: center;"> See Course </h3> </button>-->
-<!--            </a>-->
-<!--            <a href="/seeschedule" style="text-align: center; margin-left: 10px;">-->
-<!--                <button type="button" class="btn btn-dark" style="text-align: center;">-->
-<!--                    <h3 style="text-align: center;"> See Schedule </h3> </button>-->
-<!--            </a>-->
-<!--            <a href="/seeappointment" style="text-align: center; margin-left: 10px;">-->
-<!--                <button type="button" class="btn btn-dark" style="text-align: center;">-->
-<!--                    <h3 style="text-align: center;"> See Appointment </h3> </button>-->
-<!--            </a>-->
-            <form form-method="post" th:action="@{/logout}">
-                <button style="width:200px; font-size: 20px; border-color: red;" sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Log Out</button>
-                <button style="width:200px; font-size: 20px;" sec:authorize="isAnonymous()" th:href="@{~/login}" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Log In</button>
-            </form>
+        <div class="text-center">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <form form-method="get" th:action="@{/seecourse}" sec:authorize="isAuthenticated()">
+                        <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Course</button>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <form form-method="get" th:action="@{'/seeschedule/'+${USERNAME}}" sec:authorize="isAuthenticated()">
+                        <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Schedule</button>
+                    </form>
+                </div>
+                <div class="col-md-2">    
+                    <form form-method="get" th:action="@{'/seeappointment/'+${USERNAME}}" sec:authorize="isAuthenticated()">
+                        <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Appointment</button>
+                    </form>
+                </div>
+                <div class="col-md-2">    
+                    <form form-method="get" th:action="@{/register-student}" sec:authorize="hasAuthority('USER')">
+                        <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Register as Student</button>
+                    </form>
+                    <h2 sec:authorize="hasAuthority('STUDENT')">You are registered as Student</h2>
+                </div>
+                <div class="col-md-2">
+                    <form form-method="get" th:action="@{/register-TA}" sec:authorize="hasAuthority('USER')">
+                        <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Register as TA</button>
+                    </form>
+                    <h2 sec:authorize="hasAuthority('TA')">You are registered as TA</h2>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <form form-method="get" th:action="@{/signup}" sec:authorize="isAnonymous()">
+                        <button class="btn btn-outline-info my-2 my-sm-0 btn-sm" 
+                        style="width:200px; font-size: 20px;" type="submit">Sign Up</button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form form-method="post" th:action="@{/login}">
+                        <button style="width:200px; font-size: 20px;" sec:authorize="isAnonymous()" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Log In</button>
+                    </form>
+                </div>
+                <div class="col-md-2"></div>
+                <form form-method="post" th:action="@{/logout}">
+                    <button style="width:200px; font-size: 20px; border-color: red;" sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Log Out</button>
+                </form>
+            </div>
+            
         </div>
-    </div>
+    <!-- </div> -->
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
