@@ -43,6 +43,6 @@ public class Schedule {
     private LocalTime time;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "id")
     private User user;
 }
