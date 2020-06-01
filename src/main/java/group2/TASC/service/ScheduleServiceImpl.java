@@ -26,6 +26,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public void addSchedule(Schedule schedule, String username) {
         User user = userService.findByUsername(username);
+        System.out.println(username);
         schedule.setUser(user);
         scheduleRepo.save(schedule);
     }

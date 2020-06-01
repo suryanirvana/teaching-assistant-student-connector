@@ -20,7 +20,7 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "schedule_id")
     private Long id;
 
     @NotNull
@@ -43,6 +43,6 @@ public class Schedule {
     private LocalTime time;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private User user;
 }
