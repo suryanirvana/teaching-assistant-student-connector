@@ -1,0 +1,91 @@
+package group2.TASC.controller;
+
+import group2.TASC.model.Appointment;
+import group2.TASC.model.Schedule;
+import group2.TASC.model.User;
+import group2.TASC.service.AppointmentService;
+import group2.TASC.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Controller
+public class AppointmentController {
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    AppointmentService appointmentService;
+
+    @GetMapping("/seeappointment/{USERNAME}")
+    public String appointmentPage(@PathVariable("USERNAME") String username, Authentication authentication, Model model) {
+        List<User> TAList = new ArrayList<>();
+        List<Appointment> appointments = new ArrayList<>();
+        for (User user : userService.findAllUsers()) {
+            if(user.getRoleList().contains("TA") && !user.getName().equals(username)) {
+                TAList.add(user);
+            }
+        }
+        for (Appointment appointment : appointmentService.findAllAppointments()) {
+            if (appointment.getStudent().equals(username) || appointment.getTa().equals(username)) {
+                appointments.add(appointment);
+            }
+        }
+        model.addAttribute("TA", TAList);
+        model.addAttribute("APPOINTMENT", appointments);
+        model.addAttribute("USERNAME", authentication.getName());
+        return "see-appointment";
+    }
+
+    @GetMapping("/add/appointment/{USERNAME}/{TA}")
+    public String addAppointmentPage(@PathVariable("USERNAME") String username, @PathVariable("TA") String ta, Model model) {
+        model.addAttribute("USERNAME", username);
+        model.addAttribute("TA", ta);
+        model.addAttribute("STATUS", "Waiting for confirmation");
+        return "add-appointment";
+    }
+
+    @PostMapping("/addappointment/{USERNAME}/{TA}")
+    public String addSchedule(@PathVariable("USERNAME") String username, @PathVariable("TA") String ta, @Valid Appointment appointment, BindingResult result, Model model) {
+        appointment.setStudent(username);
+        appointment.setTa(ta);
+        if (result.hasErrors()) {
+            return result.toString();
+        }
+
+//
+//        mailerService.sendEmail(System.getenv("TEST_EMAIL"), "You have added a new course",
+//                "Successfully add new schedule");
+//
+        appointmentService.addAppointment(appointment);
+        model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
+        return "redirect:/seeappointment/" + username;
+    }
+
+    @GetMapping("/accept/{id}/{USERNAME}")
+    public String acceptAppointment(@PathVariable("id") Long id, @PathVariable("USERNAME") String username, Model model) {
+        Appointment appointment = appointmentService.getAppointmentById(id);
+        appointmentService.acceptAppointment(appointment);
+        model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
+        return "redirect:/seeappointment/" + username;
+    }
+
+    @GetMapping("/reject/{id}/{USERNAME}")
+    public String rejectAppointment(@PathVariable("id") Long id, @PathVariable("USERNAME") String username, Model model) {
+        Appointment appointment = appointmentService.getAppointmentById(id);
+        appointmentService.rejectAppointment(appointment);
+        model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
+        return "redirect:/seeappointment/" + username;
+    }
+}

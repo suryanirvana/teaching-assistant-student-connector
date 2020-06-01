@@ -2,6 +2,8 @@ package group2.TASC.controller;
 
 import group2.TASC.model.User;
 import group2.TASC.repository.UserRepo;
+import group2.TASC.service.StudentService;
+import group2.TASC.service.TeachingAssistantService;
 import group2.TASC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +28,10 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private UserRepo userRepo;
+    private StudentService studentService;
+
+    @Autowired
+    private TeachingAssistantService teachingAssistantService;
 
     private static final String REDIRECT = "redirect:/";
 
@@ -42,8 +47,32 @@ public class UserController {
         } catch (Exception e) {
             model.addAttribute("ERROR_MESSAGE", "Username already exist");
         }
-        user.setRoles(user.getRoles()+",TA");
-        userRepo.save(user);
+        return REDIRECT;
+    }
+
+    @GetMapping("/register-student")
+    public String registerStudent(Authentication authentication, Model model) throws Exception {
+        User user = userService.findByUsername(authentication.getName());
+        String error = "Successfully registered as Student";
+        if (!user.getRoleList().contains("STUDENT")) {
+            studentService.addStudent(authentication.getName());
+        } else {
+            error = "You are registered as Student";
+        }
+        model.addAttribute("ERROR_STUDENT", error);
+        return REDIRECT;
+    }
+
+    @GetMapping("/register-TA")
+    public String registerTA(Authentication authentication, Model model) throws Exception {
+        User user = userService.findByUsername(authentication.getName());
+        String error = "Successfully registered as TA";
+        if (!user.getRoleList().contains("TA")) {
+            teachingAssistantService.addTA(authentication.getName());
+        } else {
+            error = "You are registered as TA";
+        }
+        model.addAttribute("ERROR_TA", error);
         return REDIRECT;
     }
 
