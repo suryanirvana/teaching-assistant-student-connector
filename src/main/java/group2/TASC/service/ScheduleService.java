@@ -14,5 +14,5 @@ public interface ScheduleService {
 
     Schedule getScheduleById(long id);
 
-    void updateSchedule(Schedule schedule);
+    void updateSchedule(Schedule schedule, String username);
 }

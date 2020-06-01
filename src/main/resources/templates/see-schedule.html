@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,13 +30,19 @@
                 <td th:text="${schedule.date}"></td>
                 <td th:text="${schedule.time}"></td>
                 <td th:text="${schedule.duration}"></td>
-<!--                <td>-->
+                <td>
 <!--                    <a th:href="@{/edit-schedule/{id}(id=${schedule.id})}"><button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;">-->
 <!--                        Edit </button></a>-->
-<!--                    <a th:href="@{/delete-schedule/{id}(id=${schedule.id})}">-->
+<!--                    <a th:href="@{'/delete-schedule/'+{id}(id=${schedule.id})+'/'+${USERNAME}}">-->
 <!--                        <button type="button" class="btn btn-primary btn-lg" style="text-align: center; font-size: 15px;">-->
 <!--                            Delete </button></a>-->
-<!--                </td>-->
+                    <form form-method="get" th:action="@{'/edit-schedule/'+${schedule.id}+'/'+${USERNAME}}">
+                        <button type="submit" class="btn" style="text-align: center; font-size: 15px; color: black; border-color: black; border-width: 2px;"> Edit </button>
+                    </form>
+                    <form form-method="get" th:action="@{'/delete-schedule/'+${schedule.id}+'/'+${USERNAME}}">
+                        <button type="submit" class="btn" style="text-align: center; font-size: 15px; color: black; border-color: black; border-width: 2px;"> Delete </button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

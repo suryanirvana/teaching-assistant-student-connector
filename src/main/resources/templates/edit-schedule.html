@@ -12,28 +12,33 @@
     <div class="col-sm"></div>
     <div class="col-sm-10">
         <br><br><br>
-        <form action="#" th:action="@{/update-schedule/{id}(id=${id})}" th:object="${SCHEDULE}" method="post"
+        <form action="#" th:action="@{'/update-schedule/'+${schedule.id}+'/'+${USERNAME}}" th:object="${schedule}" method="post"
               style="text-align: center;">
             <div class="form-group">
-                <label for="scheduleName">Schedule Name</label> <br>
+                <label for="scheduleName">Schedule Name: </label> <br>
                 <input type="text" th:field="*{scheduleName}" id="scheduleName" placeholder="Schedule Name">
                 <span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}"></span>
             </div>
             <br>
             <div class="form-group">
-                <label for="duration">Duration</label> <br>
-                <input type="text" th:field="*{duration}" id="duration" placeholder="Duration (in hours)">
-                <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
+                <label for="date">Date: </label> <br>
+                <input type="date" th:field="*{date}" id="date" placeholder="Date">
+                <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
             </div>
             <br>
             <div class="form-group">
-                <label for="date">Date</label> <br>
-                <input type="date" th:field="*{date}" id="date" placeholder="Date">
-                <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
-                <br><br><br>
-                <button type="button" class="btn btn-dark" style="text-align: center;">
-                    <input type="submit" value="Edit Schedule"></button>
+                <label for="time">Schedule Name: </label> <br>
+                <input type="text" th:field="*{time}" id="time" placeholder="Time">
+                <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
             </div>
+            <br>
+            <div class="form-group">
+                <label for="duration">Duration: </label> <br>
+                <input type="text" th:field="*{duration}" id="duration" placeholder="Duration (in hours)">
+                <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
+            </div>
+            <br><br><br>
+            <button type="button" class="btn btn-dark" style="text-align: center;"><input type="submit" value="Edit Schedule"></button>
         </form>
     </div>
     <div class="col-sm"></div>

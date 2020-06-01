@@ -13,12 +13,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("")
 public class ScheduleController {
 
     @Autowired
@@ -67,37 +69,40 @@ public class ScheduleController {
         model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
         return "redirect:/seeschedule/" + username;
     }
-//
-//    @GetMapping("/delete-schedule/{USERNAME}/{id}")
-//    public String deleteSchedule(@PathVariable("id") long id, Model model) throws Exception {
-//        try {
-//            scheduleService.getScheduleById(id);
-//        } catch (Exception e) {
-//            throw new Exception();
-//        }
-//        scheduleService.removeScheduleById(id);
-//        model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
-//        return "redirect:/seeschedule";
-//    }
-//
-//    @PostMapping("/update-schedule/{USERNAME}/{id}")
-//    public String updateSchedule(@PathVariable("id") long id, @Valid Schedule schedule,
-//                               BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            schedule.setId(id);
+
+    @GetMapping("/edit-schedule/{id}/{USERNAME}")
+    public String showUpdateScheduleForm(@PathVariable("id") long id, @PathVariable("USERNAME") String username, Model model) throws Exception {
+        if(!scheduleRepo.existsById(id)) {
+            throw new IllegalArgumentException("Invalid user Id:" + id);
+        }
+        Schedule sched = scheduleRepo.findById(id);
+        model.addAttribute("schedule", sched);
+        model.addAttribute("USERNAME", username);
+        return "edit-schedule";
+    }
+
+    @PostMapping("/update-schedule/{id}/{USERNAME}")
+    public String updateSchedule(@PathVariable("USERNAME") String username, @PathVariable("id") long id, @Valid Schedule schedule,
+                                 BindingResult result, Model model) throws Exception {
+        if (result.hasErrors()) {
+            schedule.setId(id);
+            throw new Exception(result.toString());
 //            return "edit-schedule";
-//        }
-//        scheduleService.updateSchedule(schedule);
-//        return "redirect:/seeschedule";
-//    }
-//
-//    @GetMapping("/edit-schedule/{USERNAME}/{id}")
-//    public String showUpdateScheduleForm(@PathVariable("id") long id, Model model) throws Exception {
-//        if(!scheduleRepo.existsById(id)) {
-//            throw new IllegalArgumentException("Invalid user Id:" + id);
-//        }
-//        Schedule sched = scheduleRepo.findById(id);
-//        model.addAttribute(SCHEDULE, sched);
-//        return "edit-schedule";
-//    }
+        }
+        scheduleService.updateSchedule(schedule, username);
+        return "redirect:/seeschedule/" + username;
+    }
+
+    @GetMapping("/delete-schedule/{id}/{USERNAME}")
+    public String deleteSchedule(@PathVariable("id") long id, @PathVariable("USERNAME") String username, Model model) throws Exception {
+        try {
+            scheduleService.getScheduleById(id);
+        } catch (Exception e) {
+            throw new Exception();
+        }
+        scheduleService.removeScheduleById(id);
+        model.addAttribute(SCHEDULE, scheduleService.getAllSchedule());
+        model.addAttribute("USERNAME", username);
+        return "redirect:/seeschedule/" + username;
+    }
 }

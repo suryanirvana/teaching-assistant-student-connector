@@ -44,10 +44,10 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public void updateSchedule(Schedule schedule) {
+    public void updateSchedule(Schedule schedule, String username) {
         if (!scheduleRepo.existsById(schedule.getId())) {
             throw new EntityNotFoundException();
         }
-        scheduleRepo.save(schedule);
+        addSchedule(schedule, username);
     }
 }
