@@ -86,8 +86,7 @@ public class ScheduleController {
                                  BindingResult result, Model model) throws Exception {
         if (result.hasErrors()) {
             schedule.setId(id);
-            throw new Exception(result.toString());
-//            return "edit-schedule";
+            return "edit-schedule";
         }
         scheduleService.updateSchedule(schedule, username);
         return "redirect:/seeschedule/" + username;
