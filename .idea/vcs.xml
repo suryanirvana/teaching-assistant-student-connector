@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tasc-teaching-assistant-student-connector" vcs="Git" />
   </component>
 </project>
