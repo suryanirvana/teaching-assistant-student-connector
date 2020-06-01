@@ -41,7 +41,7 @@ public class User {
     @NotNull
     @Column(name="roles")
     private String roles = "";
-    
+
     @Column(name="course_code")
     private String courseCode = "";
 
