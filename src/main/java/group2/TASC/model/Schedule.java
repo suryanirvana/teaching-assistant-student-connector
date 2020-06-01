@@ -39,7 +39,7 @@ public class Schedule {
 
     @NotNull
     @Column(name = "time_schedule")
-    @DateTimeFormat(pattern = "HH:mm")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime time;
 
     @ManyToOne

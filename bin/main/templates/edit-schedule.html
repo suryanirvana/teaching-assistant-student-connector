@@ -85,25 +85,25 @@
               style="text-align: center;">
             <div class="form-group">
                 <label for="scheduleName">Schedule Name: </label> <br>
-                <input type="text" th:field="*{scheduleName}" id="scheduleName" placeholder="Schedule Name">
+                <input class="takeinput" type="text" th:field="*{scheduleName}" id="scheduleName" placeholder="Schedule Name">
                 <span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}"></span>
             </div>
             <br>
             <div class="form-group">
                 <label for="date">Date: </label> <br>
-                <input type="date" th:field="*{date}" id="date" placeholder="Date">
+                <input class="takeinput" type="date" th:field="*{date}" id="date" placeholder="Date">
                 <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
             </div>
             <br>
-            <div class="form-group">
-                <label for="time">Schedule Name: </label> <br>
-                <input type="text" th:field="*{time}" id="time" placeholder="Time">
-                <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
-            </div>
+            <label for="time">Time: </label><br>
+            <input type="time" class="takeinput" id="time" name="time"
+                   placeholder="Time"><br>
+                   <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span><br>
+                   <br>
             <br>
             <div class="form-group">
-                <label for="duration">Duration: </label> <br>
-                <input type="text" th:field="*{duration}" id="duration" placeholder="Duration (in hours)">
+                <label for="duration">Duration (in hours): </label> <br>
+                <input class="takeinput" type="text" th:field="*{duration}" id="duration" placeholder="Duration (in hours)">
                 <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
             </div>
             <br><br>
