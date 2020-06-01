@@ -54,6 +54,18 @@
                 <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Schedule</button>
             </form>
             <br>
+            <form form-method="get" th:action="@{'/seeappointment/'+${USERNAME}}" sec:authorize="isAuthenticated()">
+                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">See Appointment</button>
+            </form>
+            <br>
+            <form form-method="get" th:action="@{/register-student}" sec:authorize="hasAuthority('USER')">
+                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Register as Student</button>
+            </form>
+            <h2 sec:authorize="hasAuthority('STUDENT')">You are registered as Student</h2>
+            <form form-method="get" th:action="@{/register-TA}" sec:authorize="hasAuthority('USER')">
+                <button style="width:200px; font-size: 20px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Register as TA</button>
+            </form>
+            <h2 sec:authorize="hasAuthority('TA')">You are registered as TA</h2>
 <!--            <a href="/seecourse" style="text-align: center; margin-left: 10px;">-->
 <!--                <button type="button" class="btn btn-dark" style="text-align: center;">-->
 <!--                    <h3 style="text-align: center;"> See Course </h3> </button>-->

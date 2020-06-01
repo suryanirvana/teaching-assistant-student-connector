@@ -8,11 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
-        h1 {
-    text-align: center;
-    font-size: 40px;
-    font-family: Poppins;
-    color: black;
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        font-family: Poppins;
+        color: black;
     }
     .box {
         background-color: #ffe9c5;
@@ -35,7 +35,7 @@
     label {
         font-family: Poppins;
         text-align: left;
-        font-size: 30px;
+        font-size: 25px;
     }
     input.btn {
         width: 200px;
@@ -84,29 +84,25 @@
         <form action="#" th:action="@{'/update-schedule/'+${schedule.id}+'/'+${USERNAME}}" th:object="${schedule}" method="post"
               style="text-align: center;">
             <div class="form-group">
-                <label for="scheduleName">Schedule Name: </label> <br>
-                <input class="takeinput" type="text" th:field="*{scheduleName}" id="scheduleName" placeholder="Schedule Name">
+                <label for="scheduleName">Schedule Name: </label><br>
+                <input class="takeinput" type="text" th:field="*{scheduleName}" id="scheduleName" placeholder="Schedule Name"><br>
                 <span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}"></span>
             </div>
-            <br>
             <div class="form-group">
-                <label for="date">Date: </label> <br>
-                <input class="takeinput" type="date" th:field="*{date}" id="date" placeholder="Date">
+                <label for="date">Date: </label><br>
+                <input class="takeinput" type="date" th:field="*{date}" id="date" placeholder="Date"><br>
                 <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
             </div>
-            <br>
-            <label for="time">Time: </label><br>
-            <input type="time" class="takeinput" id="time" name="time"
-                   placeholder="Time"><br>
-                   <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span><br>
-                   <br>
-            <br>
             <div class="form-group">
-                <label for="duration">Duration (in hours): </label> <br>
-                <input class="takeinput" type="text" th:field="*{duration}" id="duration" placeholder="Duration (in hours)">
+                <label for="time">Time: </label><br>
+                <input type="time" class="takeinput" id="time" name="time" placeholder="Time"><br>
+                <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration (in hours): </label><br>
+                <input class="takeinput" type="text" th:field="*{duration}" id="duration" placeholder="Duration (in hours)"><br>
                 <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
             </div>
-            <br><br>
             <button type="button" class="btn" style="text-align: center;"><input class="btn" type="submit" value="Edit Schedule"></button>
         </form>
     </div>

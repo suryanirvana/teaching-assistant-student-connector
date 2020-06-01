@@ -9,69 +9,69 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
         h1 {
- text-align: center;
- font-size: 40px;
- font-family: Poppins;
- color: black;
- }
- .box {
-     background-color: #ffe9c5;
-     max-width: 100%;
-     max-height: 100%;
-     padding-top: 10px;
-     padding-left: 25px;
-     padding-right: 10px;
-     padding-bottom: 10px;
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 20px;
-     margin-bottom: auto;
-     color: black;
-     vertical-align: middle;
-     font-size: 18px;
-     overflow: auto;
-     border-radius: 20px;
- }
- label {
-     font-family: Poppins;
-     text-align: left;
-     font-size: 25px;
- }
- input.btn {
-     width: 200px;
-     border-radius: 30px;
-     border-color: white;
-     border-width: 5px;
-     background-color: white;
-     font-family: Montserrat;
-     color: black;
- }
- input.btn:hover {
-     width: 200px;
-     border-radius: 30px;
-     border-color: white;
-     border-width: 5px;
-     background-color: white;
-     font-family: Montserrat;
-     color: black;
-     box-shadow: 1px 1px 20px gray;
- }
- input.takeinput {
-     width: 400px;
-     border-radius: 20px;
-     width: 200px;
-     outline:0px;
-     -webkit-appearance:none;
-     padding-left: 10px;
- }
- input.takeinput:hover {
-     outline:0px;
-     -webkit-appearance:none;
- }
- span {
-     color: red;
- }
- </style>
+            text-align: center;
+            font-size: 40px;
+            font-family: Poppins;
+            color: black;
+        }
+        .box {
+            background-color: #ffe9c5;
+            max-width: 100%;
+            max-height: 100%;
+            padding-top: 10px;
+            padding-left: 25px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            margin-bottom: auto;
+            color: black;
+            vertical-align: middle;
+            font-size: 18px;
+            overflow: auto;
+            border-radius: 20px;
+        }
+        label {
+            font-family: Poppins;
+            text-align: left;
+            font-size: 25px;
+        }
+        input.btn {
+            width: 200px;
+            border-radius: 30px;
+            border-color: white;
+            border-width: 5px;
+            background-color: white;
+            font-family: Montserrat;
+            color: black;
+        }
+        input.btn:hover {
+            width: 200px;
+            border-radius: 30px;
+            border-color: white;
+            border-width: 5px;
+            background-color: white;
+            font-family: Montserrat;
+            color: black;
+            box-shadow: 1px 1px 20px gray;
+        }
+        input.takeinput {
+            width: 400px;
+            border-radius: 20px;
+            width: 200px;
+            outline:0px;
+            -webkit-appearance:none;
+            padding-left: 10px;
+        }
+        input.takeinput:hover {
+            outline:0px;
+            -webkit-appearance:none;
+        }
+        span {
+            color: red;
+        }
+    </style>
 </head>
 
 <body style="background-image: linear-gradient(-90deg, #aacfcf, #8ccbbe, #679b9b)">
@@ -85,19 +85,19 @@
             <label for="scheduleName">Schedule name: </label><br>
             <input type="text" class="takeinput" id="scheduleName" name="scheduleName"
                    placeholder="Schedule Name"><br>
-                   <span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}"></span><br>
+<!--                   <span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}"></span><br>-->
             <label for="date">Date (YYYY-MM-DD): </label><br>
             <input type="date" class="takeinput" id="date" name="date"
                    placeholder="Date"><br>
-                   <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span><br>
+<!--                   <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span><br>-->
             <label for="time">Time (HH:MM): </label><br>
             <input type="time" class="takeinput" id="time" name="time"
                    placeholder="Time"><br>
-                   <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span><br>
+<!--                   <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span><br>-->
             <label for="duration">Duration (in hours): </label><br>
             <input type="text" class="takeinput" id="duration" name="duration"
                    placeholder="Duration"><br>
-                   <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span><br>
+<!--                   <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span><br>-->
             <button type="button" class="btn" style="text-align: center;">
                 <input type="submit" class="btn" value="Add Schedule">
             </button>
