@@ -26,13 +26,13 @@ import java.util.List;
 public class ScheduleController {
 
     @Autowired
-    ScheduleRepo scheduleRepo;
+    private ScheduleRepo scheduleRepo;
 
     @Autowired
-    ScheduleService scheduleService;
+    private ScheduleService scheduleService;
 
     @Autowired
-    AppointmentService appointmentService;
+    private AppointmentService appointmentService;
 //
 //    @Autowired
 //    MailerService mailerService;

@@ -25,16 +25,16 @@ import java.util.Optional;
 public class AppointmentController {
 
     @Autowired
-    UserService userService;
+    private AppointmentService appointmentService;
 
     @Autowired
-    UserRepo userRepo;
+    private UserService userService;
 
     @Autowired
-    AppointmentService appointmentService;
+    private UserRepo userRepo;
 
     @Autowired
-    MailerService mailerService;
+    private MailerService mailerService;
 
     @GetMapping("/seeappointment/{USERNAME}")
     public String appointmentPage(@PathVariable("USERNAME") String username, Authentication authentication, Model model) {
@@ -74,7 +74,7 @@ public class AppointmentController {
                         + "Appointment Name: " + appointment.getAppointmentName() + "\n"
                         + "Date: " + appointment.getDate() + "\n"
                         + "Time: " + appointment.getTime() + "\n"
-                        + ". Please give your confirmation on TASC application.");
+                        + "Please give your confirmation on TASC application.");
 
         appointmentService.addAppointment(appointment);
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());

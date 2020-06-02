@@ -80,19 +80,4 @@ public class UserController {
     public String loginForm(Authentication authentication, Model model) {
         return "login";
     }
-
-    @GetMapping("/login-error")
-    public String login(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
-        String errorMessage = null;
-        if (session != null) {
-            AuthenticationException ex = (AuthenticationException) session
-                    .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-            if (ex != null) {
-                errorMessage = "Invalid Username or Password";
-            }
-        }
-        model.addAttribute("errorMessage", errorMessage);
-        return "login";
-    }
 }

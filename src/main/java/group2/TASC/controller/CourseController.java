@@ -22,10 +22,10 @@ import java.util.List;
 public class CourseController {
 
     @Autowired
-    CourseService courseService;
+    private CourseService courseService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     private static final String REDIRECT_SEE_COURSE = "redirect:/seecourse";
     private static final String COURSE = "COURSE";
@@ -41,7 +41,6 @@ public class CourseController {
             }
         }
         model.addAttribute(COURSE, courseService.getAllCourse());
-        model.addAttribute("ta", new ArrayList<>());
         model.addAttribute(TA, TAList);
         return "see-course";
     }
@@ -95,7 +94,7 @@ public class CourseController {
     }
 
     @GetMapping("/assignTA/{courseCode}/{taId}")
-    public String deleteCourse(@PathVariable("courseCode") String courseCode, @PathVariable("taId") String taId,
+    public String assignTA(@PathVariable("courseCode") String courseCode, @PathVariable("taId") String taId,
                                Model model) throws Exception {
         courseService.assignTA(courseCode, taId);
         model.addAttribute(COURSE, courseService.getAllCourse());
