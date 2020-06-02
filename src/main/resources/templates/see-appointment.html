@@ -82,7 +82,7 @@
                         <div class="col-md-12 text-center" style="margin-left: 50px;margin-right: 50px;">
                             <h1 class="text-center">Teaching Assistants List</h1>
                             <div th:each="ta:${TA}" class="text-center">
-                                <form form-method="get" th:action="@{'/add/appointment/'+${USERNAME}+'/'+${ta.name}}" style="text-align: center;display: flex;flex-flow: row wrap;align-items: center;">
+                                <form form-method="get" th:action="@{'/add/appointment/'+${USERNAME}+'/'+${ta.username}}" style="text-align: center;display: flex;flex-flow: row wrap;align-items: center;">
                                     <h3 th:text="${ta.name}" style="margin: 10px;font-family: Montserrat;width: 200px;"></h3>
                                     <div class="row">
                                         <div class="col-md-4"></div>
@@ -100,35 +100,6 @@
             <div class="col-md-6" style="padding:0;">
                 <br><br>
                 <div class="row">
-                    <div class="col-md-5" th:each="appointment:${APPOINTMENT}" style="text-align: center;">
-                        <div class="card" style="width: 18rem; font-family: Poppins; border-radius: 20px; border-width: 1px; border-color: #ffe9c5;">
-                            <div class="card-body">
-                                <h3 class="card-title" th:text="${appointment.appointmentName}">Appointment Name</h3>
-                                <h5 class="card-subtitle mb-2 text-muted" th:text="${appointment.status}">Appointment Status</h5>
-                                <hr>
-                                <div style="text-align: left;">
-                                    <span>Time: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.time}">Time</span><br>
-                                    <span>Duration: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.duration}">Duration</span><br>
-                                    <span>Student: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.student}">Student</span><br>
-                                    <span>TA: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.ta}">TA</span><br>
-                                    <span>No of Students: </span><span style="text-align: left; font-size: 15px;" class="card-text" th:text="${appointment.numOfStudents}">Student</span><p style="text-align: left; font-size: 15px;" class="card-text" th:if="${appointment.ta} == ${USERNAME}">
-                                </div>
-                                <br>
-                                <div class="row" th:if="${appointment.ta} == ${USERNAME}">
-                                    <div class="col-sm">
-                                        <form form-method="get" th:action="@{'/accept/'+${appointment.id}+'/'+${USERNAME}}">
-                                            <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: green; border-color: green; color: white;">Accept</button>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm">
-                                        <form form-method="get" th:action="@{'/reject/'+${appointment.id}+'/'+${USERNAME}}">
-                                            <button type="submit" class="btn" style="text-align: center; font-size: 15px; background-color: red; border-color: red; color: white;">Reject</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-5" th:each="appointment:${APPOINTMENT}" style="text-align: center;">
                         <div class="card" style="width: 18rem; font-family: Poppins; border-radius: 20px; border-width: 1px; border-color: #ffe9c5;">
                             <div class="card-body">

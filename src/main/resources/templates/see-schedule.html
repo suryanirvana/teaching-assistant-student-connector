@@ -74,6 +74,12 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:each="appointment:${APPOINTMENT}">
+                    <td th:text="${appointment.appointmentName}"></td>
+                    <td th:text="${appointment.date}"></td>
+                    <td th:text="${appointment.time}"></td>
+                    <td th:text="${appointment.duration}"></td>
+                </tr>
                 <tr th:each="schedule:${SCHEDULE}">
                     <td th:text="${schedule.scheduleName}"></td>
                     <td th:text="${schedule.date}"></td>

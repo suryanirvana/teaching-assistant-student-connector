@@ -1,8 +1,10 @@
 package group2.TASC.controller;
 
+import group2.TASC.model.Appointment;
 import group2.TASC.model.Schedule;
 import group2.TASC.repository.ScheduleRepo;
 //import group2.TASC.service.MailerService;
+import group2.TASC.service.AppointmentService;
 import group2.TASC.service.ScheduleService;
 import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class ScheduleController {
 
     @Autowired
     ScheduleService scheduleService;
+
+    @Autowired
+    AppointmentService appointmentService;
 //
 //    @Autowired
 //    MailerService mailerService;
@@ -39,12 +44,19 @@ public class ScheduleController {
     @GetMapping("/seeschedule/{USERNAME}")
     public String schedulePage(@PathVariable("USERNAME") String username,Model model) {
         List<Schedule> schedules = new ArrayList<>();
+        List<Appointment> appointments = new ArrayList<>();
         for (Schedule schedule : scheduleService.getAllSchedule()) {
             if (schedule.getUser().getUsername().equals(username)) {
                 schedules.add(schedule);
             }
         }
+        for (Appointment appointment : appointmentService.findAllAppointments()) {
+            if (appointment.getStudent().equals(username) || appointment.getTa().equals(username)) {
+                appointments.add(appointment);
+            }
+        }
         model.addAttribute(SCHEDULE, schedules);
+        model.addAttribute("APPOINTMENT", appointments);
         model.addAttribute("USERNAME", username);
         return "see-schedule";
     }

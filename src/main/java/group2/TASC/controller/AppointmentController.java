@@ -69,8 +69,12 @@ public class AppointmentController {
         if (result.hasErrors()) {
             return result.toString();
         }
-        mailerService.sendEmail(userRepo.findByName(ta).getEmail(),  "You have a new appointment request",
-                "Hello TA, student has a new appointment request for course on date at. Please give your confirmation on the application.");
+        mailerService.sendEmail(userRepo.findByUsername(ta).getEmail(),  "You have a new appointment request",
+                "Hello " + ta + ", " + username + " has sent you an appointment request:" + "\n"
+                        + "Appointment Name: " + appointment.getAppointmentName() + "\n"
+                        + "Date: " + appointment.getDate() + "\n"
+                        + "Time: " + appointment.getTime() + "\n"
+                        + ". Please give your confirmation on TASC application.");
 
         appointmentService.addAppointment(appointment);
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
@@ -84,7 +88,10 @@ public class AppointmentController {
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
 
         mailerService.sendEmail(userService.findByUsername(username).getEmail(), "Your appointment request is accepted",
-                "Hello student your appointment with TA for course is confirmed and scheduled on date at time. Contact your TA for further information");
+                "Hello " + username + " your appointment with " + appointment.getTa() + " for " + appointment.getAppointmentName() + " is confirmed. Your appointment is scheduled on " + "\n"
+                        + "Date: " + appointment.getDate() + "\n"
+                        + "Time: " + appointment.getTime() + "\n"
+                        + "Contact your TA for further information");
         return "redirect:/seeappointment/" + username;
     }
 
@@ -94,7 +101,8 @@ public class AppointmentController {
         appointmentService.rejectAppointment(appointment);
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
         mailerService.sendEmail(userService.findByUsername(username).getEmail(), "Your appointment request is rejected",
-                "Hello student your appointment with TA for course is rejected and scheduled on date at time. Please request a new appointment.");
+                "Hello " + username + " your appointment with " + appointment.getTa() + " for " + appointment.getAppointmentName() + " scheduled on " + "\n"
+                        + "is rejected. Please request a new appointment.");
         return "redirect:/seeappointment/" + username;
     }
 }
