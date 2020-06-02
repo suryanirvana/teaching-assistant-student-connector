@@ -80,7 +80,7 @@
                     <td th:text="${schedule.time}"></td>
                     <td th:text="${schedule.duration}"></td>
                     <td>
-                        <form form-method="get" th:action="@{'/edit-schedule/'+${schedule.id}+'/'+${USERNAME}}">
+                        <form form-method="get" th:action="@{'/edit-schedule/'+${schedule.id}+'/'+${USERNAME}}" style="margin-bottom: 20px;">
                             <button type="submit" class="btn" style="text-align: center; font-size: 15px; color: black; border-color: black; border-width: 2px;"> Edit </button>
                         </form>
                         <form form-method="get" th:action="@{'/delete-schedule/'+${schedule.id}+'/'+${USERNAME}}">

@@ -92,7 +92,7 @@
                     </div>
                 </td>
                 <td sec:authorize="hasAuthority('ADMIN')">
-                    <form form-method="get" th:action="@{/edit/{courseCode}(courseCode=${course.courseCode})}">
+                    <form form-method="get" th:action="@{/edit/{courseCode}(courseCode=${course.courseCode})}" style="margin-bottom: 20px;">
                         <button type="submit" class="btn" style="text-align: center; font-size: 15px; color: black; border-color: black; border-width: 2px;"> Edit </button>
                     </form>
                     <form form-method="get" th:action="@{/delete/{courseCode}(courseCode=${course.courseCode})}" sec:authorize="hasAuthority('ADMIN')">

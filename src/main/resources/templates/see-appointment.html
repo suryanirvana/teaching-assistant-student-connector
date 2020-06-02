@@ -79,17 +79,19 @@
                 <br><br>
                 <div class="row">
                     <div class="row text-center">
-                        <div class="col-md-12 text-center" style="margin-left: 75px;margin-right: 75px;">
+                        <div class="col-md-12 text-center" style="margin-left: 50px;margin-right: 50px;">
                             <h1 class="text-center">Teaching Assistants List</h1>
-                        </div>
-                    </div>
-                    <div th:each="ta:${TA}" class="col-md-4 text-center">
-                        <h3 th:text="${ta.name}" style="margin: 10px;">hello</h3>
-                        <div class="col-md-8 text-center" style="padding-top:4px;padding-bottom: 4px;">
-                            <form form-method="get" th:action="@{'/add/appointment/'+${USERNAME}+'/'+${ta.name}}" style="text-align: center;">
-                                <button type="submit" class="btn">
-                                    Request an Appointment</button>
-                            </form>
+                            <div th:each="ta:${TA}" class="text-center">
+                                <form form-method="get" th:action="@{'/add/appointment/'+${USERNAME}+'/'+${ta.name}}" style="text-align: center;display: flex;flex-flow: row wrap;align-items: center;">
+                                    <h3 th:text="${ta.name}" style="margin: 10px;font-family: Montserrat;width: 200px;"></h3>
+                                    <div class="row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-8" >
+                                            <button type="submit" class="btn"style="width: 250px;">Request an Appointment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
