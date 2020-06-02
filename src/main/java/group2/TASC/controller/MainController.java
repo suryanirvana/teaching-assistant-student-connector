@@ -14,18 +14,8 @@ public class MainController {
         String username = "";
         try {
             username = authentication.getName();
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         model.addAttribute("USERNAME", username);
         return "base";
-    }
-
-    @GetMapping("/admin")
-    public String adminPageTest() {
-        return "admin";
-    }
-
-    @GetMapping("/error")
-    public String errorPage() {
-        return "access-denied";
     }
 }

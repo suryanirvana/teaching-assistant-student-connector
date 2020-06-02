@@ -5,15 +5,14 @@ services:
 variables:
   SONAR_TOKEN: "7b58b4b00b275046d37b5d3c441196a149de07e4"
   SONAR_HOST_URL: "https://pmpl.cs.ui.ac.id/sonarqube/"
-#  SONAR_TOKEN: $SONAR_TOKEN
-#  SONAR_HOST_URL: $SONAR_HOST_URL
-  POSTGRES_DB: nice_marmot
-  POSTGRES_USER: runner
-  POSTGRES_PASSWORD: ""
+  POSTGRES_DB: tasc
+  POSTGRES_USER: $SPRING_DATASOURCE_USERNAME
+  POSTGRES_PASSWORD: $SPRING_DATASOURCE_PASSWORD
   POSTGRES_HOST_AUTH_METHOD: trust
 
 stages:
   - build
+  - test
   - deploy
 
 before_script:
@@ -29,6 +28,23 @@ Build:
     expire_in: 1 week
   only:
     - master
+
+Sonarqube:
+  stage: test
+  script: gradle sonarqube -Dsonar.projectKey=advprog2020-i-group2assignment -Dsonar.host.url=https://pmpl.cs.ui.ac.id/sonarqube -Dsonar.login=7b58b4b00b275046d37b5d3c441196a149de07e4
+  allow_failure: true
+  only:
+    - merge_requests
+    - master
+
+unitTests:
+  stage: test
+  script:
+    - gradle check
+    - ./gradlew test
+    - ./gradlew jacocoTestReport
+    - cat build/jacocoHtml/index.html
+  coverage: '/Total.*?([0-9]{1,3})%/'
 
 Deployment:
   image: ruby:2.6
