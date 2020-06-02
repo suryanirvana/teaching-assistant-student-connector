@@ -20,5 +20,23 @@ public class CourseTest {
     @BeforeEach
     public void setUp() {
         course = new Course();
+        course.setCourseCode("CS01");
+        course.setCourseName("Advanced Programming");
+    }
+
+    @Test
+    public void whenGetTAListIsExecutedButNoTAAssignedYetItReturnsEmptyArrayList() {
+        course.setTaId("");
+        course.setTaName("");
+        List<String> taList = course.getTAList();
+        assertEquals(0, taList.size());
+    }
+
+    @Test
+    public void whenGetTAListIsExecutedAndIsTAAssignedItReturnsEmptyArrayList() {
+        course.setTaId("1");
+        course.setTaName("Test");
+        List<String> taList = course.getTAList();
+        assertEquals("1", taList.get(0));
     }
 }

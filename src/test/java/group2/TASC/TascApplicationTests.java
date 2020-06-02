@@ -30,10 +30,10 @@ class TascApplicationTests {
 //
 //    }
 //
-//    @Test
-//    void testTASCApplication() {
+    @Test
+    void testTASCApplication() {
 //        TascApplication.main(new String[]{});
-//        assertThat(mainController).isNotNull();
-//    }
+        assertThat(mainController).isNotNull();
+    }
 
 }

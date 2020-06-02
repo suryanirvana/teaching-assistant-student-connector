@@ -30,11 +30,8 @@
         button:hover {
             box-shadow: 1px 1px 20px white;
         }
-        h3,h2,span {
+        h3,h2 {
             font-weight: bold;
-        }
-        span {
-            font-size: 2rem;
         }
         h1 {
             font-weight: 900;
@@ -53,15 +50,6 @@
         }
         button.btnn:hover {
             box-shadow: 1px 1px 20px white;
-        }
-        #user {
-            -webkit-text-stroke: 1px black;
-            font-weight: 900;
-            font-size: 40px;
-            color: #8CCBBE;
-        }
-        p {
-            margin-bottom: 2px;
         }
     </style>
 </head>
@@ -113,21 +101,21 @@
         </div>
         <div class="col-md-5" sec:authorize="isAuthenticated()">
             <div style="padding-left: 5vw; padding-top: 5vw;">
-                <h2 id="user">Hi there, <span id="user" class="text-center title" th:text="${USERNAME}"></span></h2>
+                <h2 th:text="Hi there, + ${USERNAME}"></h2>
                 <h1>Welcome to</h1>
-                <h1>TASC!</h1>
+                <h1>TASC</h1>
                 <form form-method="get" th:action="@{/register-student}" sec:authorize="hasAuthority('USER')">
-                    <button class="btnn" type="submit" style="width: 270px; margin-bottom: 0;">Register as Student</button>
+                    <button class="btnn" type="submit" style="width: 270px;">Register as Student</button>
                 </form>
-                <p sec:authorize="hasAuthority('STUDENT')" style="color: red; width: 270px; margin-bottom: 5px; text-align: center;">You are registered as Student</p>
+                <p sec:authorize="hasAuthority('STUDENT')" style="color: red;">You are registered as Student</p>
                 <form form-method="get" th:action="@{/register-TA}" sec:authorize="hasAuthority('USER')">
-                    <button class="btnn" type="submit" style="width: 270px; margin-bottom: 0;">Register as TA</button>
+                    <button class="btnn" type="submit" style="width: 270px;">Register as TA</button>
                 </form>
-                <p sec:authorize="hasAuthority('TA')" style="color: red; width: 270px; margin-bottom: 5px; text-align: center;">You are registered as TA</p>
+                <p sec:authorize="hasAuthority('TA')" style="color: red;">You are registered as TA</p>
             </div>
         </div>
         <div class="col-md-7 text-center">
-            <img th:src="@{HOMEPAGE.png}" style="width: 70%; padding-top: 2vw;" alt="TASC">
+            <img src="../static/HOMEPAGE.png" style="width: 70%; padding-top: 2vw;">
         </div>
     </div>
     
