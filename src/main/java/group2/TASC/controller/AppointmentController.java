@@ -82,12 +82,13 @@ public class AppointmentController {
     }
 
     @GetMapping("/accept/{id}/{USERNAME}")
-    public String acceptAppointment(@PathVariable("id") Long id, @PathVariable("USERNAME") String username, Model model) {
+    public String acceptAppointment(@PathVariable("id") Long id, @PathVariable("USERNAME") String username,
+                                    Authentication authentication, Model model) {
         Appointment appointment = appointmentService.getAppointmentById(id);
         appointmentService.acceptAppointment(appointment);
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
 
-        mailerService.sendEmail(userService.findByUsername(username).getEmail(), "Your appointment request is accepted",
+        mailerService.sendEmail(userService.findByUsername(authentication.getName()).getEmail(), "Your appointment request is accepted",
                 "Hello " + username + " your appointment with " + appointment.getTa() + " for " + appointment.getAppointmentName() + " is confirmed. Your appointment is scheduled on " + "\n"
                         + "Date: " + appointment.getDate() + "\n"
                         + "Time: " + appointment.getTime() + "\n"
@@ -96,11 +97,12 @@ public class AppointmentController {
     }
 
     @GetMapping("/reject/{id}/{USERNAME}")
-    public String rejectAppointment(@PathVariable("id") Long id, @PathVariable("USERNAME") String username, Model model) {
+    public String rejectAppointment(@PathVariable("id") Long id, @PathVariable("USERNAME") String username,
+                                    Authentication authentication, Model model) {
         Appointment appointment = appointmentService.getAppointmentById(id);
         appointmentService.rejectAppointment(appointment);
         model.addAttribute("APPOINTMENT", appointmentService.findAllAppointments());
-        mailerService.sendEmail(userService.findByUsername(username).getEmail(), "Your appointment request is rejected",
+        mailerService.sendEmail(userService.findByUsername(authentication.getName()).getEmail(), "Your appointment request is rejected",
                 "Hello " + username + " your appointment with " + appointment.getTa() + " for " + appointment.getAppointmentName() + " scheduled on " + "\n"
                         + "is rejected. Please request a new appointment.");
         return "redirect:/seeappointment/" + username;
